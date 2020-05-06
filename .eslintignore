@@ -1,0 +1,7 @@
+node_modules
+build
+docs
+docker
+test
+.vscode
+src/generated
