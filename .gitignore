@@ -1,2 +1,18 @@
 # Dependency directories
 node_modules/
+
+# Tests & Deployment
+dist/
+test/
+coverage/
+
+# Log and zip files
+*.log
+*.tgz
+
+# Base Files
+gulpfile.js
+tsconfig.json
+tslint.json
+typings.json
+typings
