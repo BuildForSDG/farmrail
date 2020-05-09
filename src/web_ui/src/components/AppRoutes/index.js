@@ -11,7 +11,7 @@ import Login from "../Forms/Login";
 
 
 const ContentSwitch = () => {
-    return <Switch>
+    return <Switch>component={NoMatch}
         <Route exact={true} path="/" component={Homepage} />
         <Route path={localRoutes.dashboard} component={Dashboard} />
         <Route path={localRoutes.signup} component={Signup} />
