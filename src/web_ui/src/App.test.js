@@ -1,9 +1,13 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { Router } from 'react-router';
+import { localRoutes } from "./store/index";
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('renders Homepage', () => {
+    <Router >
+    <App />
+  </Router> ,
+
+
+    expect(localRoutes.homepage).toBe("/");
 });
