@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router } from 'react-router';
+import { BrowserRouter } from 'react-router-dom'
 import ContentSwitch from './index';
 import { localRoutes } from "../../store/index";
 
@@ -9,9 +9,9 @@ import { localRoutes } from "../../store/index";
 test("redirects to specified page", () => {
 
 
-  <Router >
+  <BrowserRouter >
     <ContentSwitch />
-  </Router> ,
+  </BrowserRouter> ,
 
 
     expect(localRoutes.dashboard).toBe("/dashboard");

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Router } from 'react-router';
+import { BrowserRouter } from 'react-router-dom'
 import { localRoutes } from "./store/index";
 import App from './App';
 
 test('renders Homepage', () => {
-    <Router >
+  <BrowserRouter >
     <App />
-  </Router> ,
+  </BrowserRouter> ,
 
 
     expect(localRoutes.homepage).toBe("/");
