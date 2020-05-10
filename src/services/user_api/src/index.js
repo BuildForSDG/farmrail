@@ -15,4 +15,4 @@ mongoose
   })
   .then(() => console.log('connected to db'));
 
-app.listen(3000, () => console.log(`server is Up and running on port:${config.port}`));
+app.listen(3000, () => console.log(`server is Up and running on port:${3000}`));
