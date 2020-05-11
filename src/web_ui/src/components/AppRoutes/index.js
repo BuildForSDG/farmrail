@@ -7,11 +7,16 @@ import Signup from "../Forms/Signup";
 import Login from "../Forms/Login";
 
 
-
+const NoMatch = () => (
+    <div>
+        <h2>Oops nothing here!!</h2>
+        <Link to="/">Take me home</Link>
+    </div>
+)
 
 
 const ContentSwitch = () => {
-    return <Switch>
+    return <Switch>component={NoMatch}
         <Route exact={true} path="/" component={Homepage} />
         <Route path={localRoutes.dashboard} component={Dashboard} />
         <Route path={localRoutes.signup} component={Signup} />
@@ -20,11 +25,6 @@ const ContentSwitch = () => {
     </Switch>
 }
 
-const NoMatch = () => (
-    <div>
-        <h2>Oops nothing here!!</h2>
-        <Link to="/">Take me home</Link>
-    </div>
-)
+
 
 export default ContentSwitch
