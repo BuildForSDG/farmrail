@@ -1,0 +1,49 @@
+{
+    "name": "farmrail",
+    "version": "0.1.0",
+    "description": "A platform as a solution to give farmers information and a market platform",
+    "keywords": [
+      "farmrail",
+      "microservices"
+    ],
+    "private": false,
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "directories": {
+      "test": "__tests__"
+    },
+    "scripts": {
+      "test": "jest",
+      "test:watch": "jest --watch",
+      "test:cover": "jest --coverage",
+      "lint": "eslint \"src/**/*.js\""
+    },
+    "author": {
+      "name": "Team 267",
+      "email": "kmwamasali@gmail.com"
+    },
+    "homepage": "https://github.com/BuildForSDG/js-starter#readme",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/BuildForSDG/js-starter.git"
+    },
+    "bugs": {
+      "url": "https://github.com/BuildForSDG/js-starter/issues"
+    },
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+      "@babel/core": "^7.9.0",
+      "@babel/preset-env": "^7.9.5",
+      "babel-jest": "^25.4.0",
+      "eslint": "^6.8.0",
+      "eslint-config-airbnb-base": "^14.1.0",
+      "eslint-plugin-import": "^2.20.2",
+      "jest": "^25.4.0",
+      "parcel-bundler": "^1.12.4"
+    },
+    "browserslist": [
+      "last 1 Chrome versions"
+    ]
+  }
+  
