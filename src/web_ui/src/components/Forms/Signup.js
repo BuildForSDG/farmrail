@@ -1,7 +1,6 @@
 /* eslint-disable linebreak-style */
 import { Link } from 'react-router-dom';
 import React from "react";
-import React from 'react';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
