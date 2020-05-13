@@ -1,8 +1,9 @@
 node_modules
 build
-docs
+docs 
 docker
 test
 src/**/*test.js
+src/serviceWorker.js
 .vscode
 src/generated
