@@ -1,0 +1,106 @@
+#%RAML 1.0
+---
+title: e-BookMobile API
+baseUri: http://127.0.0.1:8000/{version}
+version: v1
+
+/produce:
+    get:
+        queryParameters:
+            name:
+                displayName: Product
+                type: string
+                required: true
+                description: name of the product
+                example:
+
+            thumbnail:
+                type: string
+                required: false
+                description: must be a url pointing to the location of an image file
+                example: https://google.com/beans.jpg
+
+            description:
+                type: string
+                required: true
+                description: a full but precise account of a product
+                example: |
+                    {
+                        data:{
+                            "id": 4,
+                            "name": "cloves",
+                            "thumbnail": null,
+                            "description": "these are the leading spices",
+                        },
+                        response code: 200
+                        sucess: true
+                    }
+
+    post:
+        queryParameters:
+            name:
+                displayName: Product
+                type: string
+                required: true
+                description: name of the product
+                example: |
+                    {
+                        data:{
+                            "id": 4,
+                            "name": "cloves",
+                            "thumbnail": null,
+                            "description": "these are the leading spices",
+                        },
+                        response code: 201
+                        sucess: true
+                    }
+
+
+            thumbnail:
+                type: string
+                required: false
+                description: must be a url pointing to the location of an image file
+                example: https://google.com/beans.jpg
+
+            description:
+                type: string
+                required: true
+                description: a full but precise account of a product
+                example: these beans are grown from Uganda's fertile land contains a lot of health benefits
+
+    put:
+        queryParameters:
+            id:
+                type: string
+                required: true
+                description: this is a unique identifier of a product
+                example: |
+                    {
+                        data:{
+                            "id": 4,
+                            "name": "cloves",
+                            "thumbnail": null,
+                            "description": "these are the leading spices",
+                        },
+                        response code: 200
+                        sucess: true
+                    }
+
+
+    delete:
+        queryParameters:
+            id:
+                type: string
+                required: true
+                description: this is a unique identifier of a product
+                example: |
+                    {
+                        data:{
+                            "id": 4,
+                            "name": "cloves",
+                            "thumbnail": null,
+                            "description": "these are the leading spices",
+                        },
+                        response code: 204
+                        sucess: true
+                    }
