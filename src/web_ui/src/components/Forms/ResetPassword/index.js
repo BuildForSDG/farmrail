@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme)=>({
         background:"springgreen",
         color:"black",
         borderRadius:"4px",
-        padding:"10px",
+        padding:theme.spacing(1.25),
         border:0
     },
     inputField:{
