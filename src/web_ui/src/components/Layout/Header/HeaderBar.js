@@ -1,5 +1,6 @@
 import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Link from '@material-ui/core/Link';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,7 +15,22 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+
+import { ShoppingBasket, SupervisedUserCircle, AddAPhoto, QuestionAnswer, PostAdd } from '@material-ui/icons';
+import { Settings, LiveHelp } from '@material-ui/icons';
+
+import { drawerWidth } from '../commons/globals';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -31,6 +47,55 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+  },
+  drawerOpen: {
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  drawerClose: {
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    overflowX: 'hidden',
+    width: theme.spacing(7) + 1,
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9) + 1,
+    },
+  },
+  toolbar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+  },
+  hide: {
+    display: 'none',
   },
   search: {
     position: 'relative',
@@ -83,13 +148,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function HeaderAppBar() {
   const classes = useStyles();
+  const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -167,19 +243,26 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static" color="inherit">
+      <AppBar 
+        position="fixed"
+        color="inherit"
+        className={clsx(classes.appBar, {
+          [classes.appBarShift]: open,
+        })}
+      >
         <Toolbar>
           <IconButton
-            edge="start"
-            className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            onClick={ !open ? handleDrawerOpen : handleDrawerClose }
+            edge="start"
+            className={classes.menuButton}
           >
-            <MenuIcon />
+            { !open ? <MenuIcon /> : theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon /> }
           </IconButton>
           <Typography className={classes.title} noWrap>
             <Link href="/">
-              <img src="/images/Farmrail-logo-plain.png" className={classes.logoImg} alt="Farmrail Logo" />
+              <img src="/images/Farmrail-logo-plain.jpg" className={classes.logoImg} alt="Farmrail Logo" />
             </Link>
           </Typography>
           <div className={classes.search}>
@@ -197,14 +280,19 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+            <IconButton aria-label="show 0 new notifications" color="inherit">
+              <Badge badgeContent={0} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
             <IconButton aria-label="show 0 new mails" color="inherit">
               <Badge badgeContent={0} color="secondary">
                 <MailIcon />
               </Badge>
             </IconButton>
             <IconButton aria-label="show 0 new notifications" color="inherit">
-              <Badge badgeContent={0} color="secondary">
-                <NotificationsIcon />
+              <Badge badgeContent={1} color="secondary">
+                <AddShoppingCartIcon />
               </Badge>
             </IconButton>
             <IconButton
@@ -231,6 +319,63 @@ export default function PrimarySearchAppBar() {
           </div>
         </Toolbar>
       </AppBar>
+      <Drawer
+        variant="permanent"
+        className={clsx(classes.drawer, {
+          [classes.drawerOpen]: open,
+          [classes.drawerClose]: !open,
+        })}
+        classes={{
+          paper: clsx({
+            [classes.drawerOpen]: open,
+            [classes.drawerClose]: !open,
+          }),
+        }}
+      >
+        <div className={classes.toolbar}>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+          </IconButton>
+        </div>
+        <Divider />
+        <List>
+          <ListItem button>
+            <ListItemIcon><ShoppingBasket /></ListItemIcon>
+            <ListItemText primary="Market" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon><QuestionAnswer /></ListItemIcon>
+            <ListItemText primary="Question & Answer" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon><SupervisedUserCircle /></ListItemIcon>
+            <ListItemText primary="Forums" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon><AddAPhoto /></ListItemIcon>
+            <ListItemText primary="Media" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon><InboxIcon /></ListItemIcon>
+            <ListItemText primary="Messages" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon><PostAdd /></ListItemIcon>
+            <ListItemText primary="Info Lookup" />
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          <ListItem button>
+            <ListItemIcon><Settings /></ListItemIcon>
+            <ListItemText primary="Settings" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon><LiveHelp /></ListItemIcon>
+            <ListItemText primary="Help" />
+          </ListItem>
+        </List>
+      </Drawer>
       {renderMobileMenu}
       {renderMenu}
     </div>

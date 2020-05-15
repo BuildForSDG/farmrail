@@ -39,6 +39,7 @@ export default function ProductSearch() {
         <Grid item xs={12}>
           <Paper component="form" className={classes.root}>
             <InputBase
+              name="produce_search_main"
               className={classes.input}
               placeholder="Search vegetables, fertilizers, farm tools ..."
               inputProps={{ 'aria-label': 'search for produce' }}
@@ -47,6 +48,38 @@ export default function ProductSearch() {
               <SearchIcon />
             </IconButton>
           </Paper>
+        </Grid>
+        <Grid item>
+          <FormControl>
+            <Select
+              id="category"
+              value={10}
+              label="Category"
+            >
+              <MenuItem value="">
+                <em>Farms</em>
+              </MenuItem>
+              <MenuItem value={10}>Nami's Farm</MenuItem>
+              <MenuItem value={20}>Zoro's Farm</MenuItem>
+              <MenuItem value={30}>Luffy's Farm</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item>
+          <FormControl>
+            <Select
+              id="category"
+              value={10}
+              label="Category"
+            >
+              <MenuItem value="">
+                <em>Farmer</em>
+              </MenuItem>
+              <MenuItem value={10}>Farmer Ussop</MenuItem>
+              <MenuItem value={20}>Farmer Frankie</MenuItem>
+              <MenuItem value={30}>Farmer Jimbei</MenuItem>
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item>
           <FormControl>
@@ -65,9 +98,9 @@ export default function ProductSearch() {
           </FormControl>
         </Grid>
         <Grid item>
-            <Button variant="contained" color="primary">
-              More Filters
-            </Button>
+          <Button variant="contained" color="primary">
+            More Filters
+          </Button>
         </Grid>
       </Grid>
     </div>
