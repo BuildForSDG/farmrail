@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import localRoutes from './routes';
 import Homepage from '../Pages/Homepage';
 import Dashboard from '../Pages/Dashboard';
-import Signup from '../Forms/Signup/Signup';
+import Signup from '../Pages/SignUp';
 import Login from '../Forms/Login/Login';
 import NoMatch from '../Pages/NoMatch';
 
