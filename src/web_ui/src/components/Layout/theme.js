@@ -8,6 +8,9 @@ const theme = createMuiTheme({
     primary: {
       main: green[500],
     },
+    secondary: {
+      main: green[100],
+    },
     error: {
       main: blue[500],
     },

@@ -6,8 +6,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   main: {
-    minHeight: '65vh'
-  }
+    minHeight: '65vh',
+    marginTop: '64px',
+    [theme.breakpoints.down('md')]: {
+      margin: '10% 0 0 14%',
+    },
+  },
 }));
 
 export default function Layout(props) {
