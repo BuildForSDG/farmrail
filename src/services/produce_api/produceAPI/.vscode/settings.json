@@ -1,4 +1,10 @@
 {
   "python.linting.enabled": true,
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "python.testing.pytestArgs": [
+    "produceAPI"
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.nosetestsEnabled": false,
+  "python.testing.pytestEnabled": true
 }

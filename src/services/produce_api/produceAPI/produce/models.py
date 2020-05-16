@@ -1,5 +1,6 @@
 from django.db import models
 
+# specifying database fields
 class Produce(models.Model):
     name = models.CharField(max_length=150)
     thumbnail = models.ImageField(null=True)
