@@ -30,11 +30,11 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import { ShoppingBasket, SupervisedUserCircle, AddAPhoto, QuestionAnswer, PostAdd } from '@material-ui/icons';
 import { Settings, LiveHelp } from '@material-ui/icons';
 
-import { drawerWidth } from '../commons/globals';
+import { drawerWidth } from '../../common/Globals';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -196,7 +196,9 @@ export default function HeaderAppBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Sign In</MenuItem>
-      <MenuItem><Link href="./signup">Sign Up</Link></MenuItem>
+      <MenuItem>
+        <Link href="./signup">Sign Up</Link>
+      </MenuItem>
     </Menu>
   );
 
@@ -254,7 +256,7 @@ export default function HeaderAppBar() {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={ !open ? handleDrawerOpen : handleDrawerClose }
+            onClick={!open ? handleDrawerOpen : handleDrawerClose}
             edge="start"
             className={classes.menuButton}
           >

@@ -4,9 +4,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
-import './Signup.css';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,7 +30,6 @@ export default function Signup() {
   const classes = useStyles();
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5" style={{ textAlign: 'center' }}>
           Signup.

@@ -8,9 +8,10 @@ export default function Copyright() {
       {'Copyright © '}
       <Link data-copyright="farmrail" color="inherit" href="https://farmrail-staging.netlify.app">
         Farmrail
-      </Link>{' '}
+      </Link>
+      {' '}
       {new Date().getFullYear()}
-      {'.'}
+      `.`
     </Typography>
   );
 }
