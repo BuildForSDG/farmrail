@@ -1,8 +1,8 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import HeaderBar from './Header/HeaderBar';
 import Footer from './Footer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -15,11 +15,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Layout(props) {
-  const {children} = props,
-    classes = useStyles();
+  const {children} = props;
+  const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <>
       <CssBaseline />
       <HeaderBar />
       <main className={classes.main}>
@@ -30,6 +30,6 @@ export default function Layout(props) {
       {/* Footer */}
       <Footer />
       {/* End footer */}
-    </React.Fragment>
+    </>
   );
 }

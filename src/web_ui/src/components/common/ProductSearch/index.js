@@ -61,7 +61,7 @@ const categorySearch = {
 
 export default function ProductSearch() {
   const classes = useStyles();
-  const menuItems = [farmSearch, farmersSearch, categorySearch];
+  const searchFilters = [farmSearch, farmersSearch, categorySearch];
 
   return (
     <div className={classes.heroButtons}>
@@ -79,7 +79,7 @@ export default function ProductSearch() {
             </IconButton>
           </Paper>
         </Grid>
-        {menuItems.map((item, index) => (
+        {searchFilters.map((item, index) => (
           <Grid item key={index}>
             <FormControl>
               <Select
@@ -91,7 +91,7 @@ export default function ProductSearch() {
                   <em>{item.label}</em>
                 </MenuItem>
                 {item.items.map((listItem, indx) => (
-                  <MenuItem key={indx} value={listItem.value}>{listItem.text}</MenuItem>
+                  <MenuItem key={indx} value={listItem.value}>{`${listItem.text}`}</MenuItem>
                 ))}
               </Select>
             </FormControl>
