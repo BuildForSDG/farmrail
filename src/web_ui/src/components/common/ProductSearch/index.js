@@ -80,7 +80,7 @@ export default function ProductSearch() {
           </Paper>
         </Grid>
         {searchFilters.map((item, index) => (
-          <Grid item key={index}>
+          <Grid item key={item.type}>
             <FormControl>
               <Select
                 id={item.type}
@@ -90,8 +90,8 @@ export default function ProductSearch() {
                 <MenuItem value="">
                   <em>{item.label}</em>
                 </MenuItem>
-                {item.items.map((listItem, indx) => (
-                  <MenuItem key={indx} value={listItem.value}>{`${listItem.text}`}</MenuItem>
+                {item.items.map((listItem) => (
+                  <MenuItem key={listItem.text} value={listItem.value}>{`${listItem.text}`}</MenuItem>
                 ))}
               </Select>
             </FormControl>
