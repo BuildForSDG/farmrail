@@ -29,9 +29,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const farmSearch = {
+  type: "farms",
+  label: "Farms",
+  items: [
+    { value: 10, text: "Nami's Farm" }, 
+    { value: 100, text: "Zoro's Farm" }, 
+    { value: 120, text: "Luffy's Farm"}
+  ], 
+};
+
+const farmersSearch = {
+  type: "farmers",
+  label: "Farmers",
+  items: [
+    { value: 10, text: "Farmer Ussop" }, 
+    { value: 100, text: "Farmer Frankie" }, 
+    { value: 120, text: "Farmer Jimbei"}
+  ], 
+};
+
+const categorySearch = {
+  type: "category",
+  label: "Category",
+  items: [
+    { value: 10, text: "vegetables" }, 
+    { value: 100, text: "farm tools" }, 
+    { value: 120, text: "Fertilizer"}
+  ], 
+};
 
 export default function ProductSearch() {
   const classes = useStyles();
+  const menuItems = [farmSearch, farmersSearch, categorySearch];
 
   return (
     <div className={classes.heroButtons}>
@@ -49,54 +79,24 @@ export default function ProductSearch() {
             </IconButton>
           </Paper>
         </Grid>
-        <Grid item>
-          <FormControl>
-            <Select
-              id="category"
-              value={10}
-              label="Category"
-            >
-              <MenuItem value="">
-                <em>Farms</em>
-              </MenuItem>
-              <MenuItem value={10}>Nami's Farm</MenuItem>
-              <MenuItem value={20}>Zoro's Farm</MenuItem>
-              <MenuItem value={30}>Luffy's Farm</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item>
-          <FormControl>
-            <Select
-              id="category"
-              value={10}
-              label="Category"
-            >
-              <MenuItem value="">
-                <em>Farmer</em>
-              </MenuItem>
-              <MenuItem value={10}>Farmer Ussop</MenuItem>
-              <MenuItem value={20}>Farmer Frankie</MenuItem>
-              <MenuItem value={30}>Farmer Jimbei</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item>
-          <FormControl>
-            <Select
-              id="category"
-              value={10}
-              label="Category"
-            >
-              <MenuItem value="">
-                <em>Categories</em>
-              </MenuItem>
-              <MenuItem value={10}>vegetables</MenuItem>
-              <MenuItem value={20}>farm tools</MenuItem>
-              <MenuItem value={30}>fertilizers</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
+        {menuItems.map((item, index) => (
+          <Grid item key={index}>
+            <FormControl>
+              <Select
+                id={item.type}
+                value={item.items[index].value}
+                label={item.label}
+              >
+                <MenuItem value="">
+                  <em>{item.label}</em>
+                </MenuItem>
+                {item.items.map((listItem, indx) => (
+                  <MenuItem key={indx} value={listItem.value}>{listItem.text}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+        ))}
         <Grid item>
           <Button variant="contained" color="primary">
             More Filters
