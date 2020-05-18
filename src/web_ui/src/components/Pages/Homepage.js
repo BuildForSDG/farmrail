@@ -19,33 +19,33 @@ const useStyles = makeStyles((theme) => ({
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(4, 0),
+    padding: theme.spacing(4, 0)
   },
   cardGrid: {
     paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    paddingBottom: theme.spacing(4)
   },
   card: {
     height: '100%',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%' // 16:9
   },
   cardContent: {
     flexGrow: 1,
-    paddingBottom: 0,
+    paddingBottom: 0
   },
   cardList: {
-    padding: 0,
+    padding: 0
   },
   space: {
-    paddingRight: theme.spacing(1),
+    paddingRight: theme.spacing(1)
   },
-  spaceTop :{
-    paddingTop: theme.spacing(1),
-  },
+  spaceTop: {
+    paddingTop: theme.spacing(1)
+  }
 }));
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -82,8 +82,8 @@ export default function Album() {
                     <Grid item xs={6}>
                       <List className={classes.cardList}>
                         <ListItem className={classes.cardList} disableGutters>
-                          <Timer className={classes.space} /> 
-                          2 hours ago
+                          <Timer className={classes.space} />
+                          <Typography>2 hours ago</Typography>
                         </ListItem>
                       </List>
                     </Grid>
@@ -93,9 +93,7 @@ export default function Album() {
                       <LocalOffer fontSize="large" />
                     </Grid>
                     <Grid item xs={3}>
-                      <Typography component="h5">
-                        Dodo
-                      </Typography>
+                      <Typography component="h5">Dodo</Typography>
                       Fastfarm
                     </Grid>
                   </Grid>
