@@ -1,9 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import PropTypes from 'prop-types';
 import HeaderBar from './Header/HeaderBar';
 import Footer from './Footer';
-import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   main: {
@@ -35,7 +35,6 @@ export default function Layout(props) {
   );
 }
 
-
-Layout.propTypes = ({
+Layout.propTypes = {
   children: PropTypes.element.isRequired
-})
+};
