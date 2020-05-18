@@ -12,51 +12,51 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles((theme) => ({
   heroButtons: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(2)
   },
   root: {
     backgroundColor: theme.palette.background.default,
     padding: '2px 4px',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   input: {
     marginLeft: theme.spacing(1),
-    flex: 1,
+    flex: 1
   },
   iconButton: {
-    padding: 10,
-  },
+    padding: 10
+  }
 }));
 
 const farmSearch = {
-  type: "farms",
-  label: "Farms",
+  type: 'farms',
+  label: 'Farms',
   items: [
-    { value: 10, text: "Nami's Farm" }, 
-    { value: 100, text: "Zoro's Farm" }, 
-    { value: 120, text: "Luffy's Farm"}
-  ], 
+    { value: 10, text: "Nami's Farm" },
+    { value: 100, text: "Zoro's Farm" },
+    { value: 120, text: "Luffy's Farm" }
+  ]
 };
 
 const farmersSearch = {
-  type: "farmers",
-  label: "Farmers",
+  type: 'farmers',
+  label: 'Farmers',
   items: [
-    { value: 10, text: "Farmer Ussop" }, 
-    { value: 100, text: "Farmer Frankie" }, 
-    { value: 120, text: "Farmer Jimbei"}
-  ], 
+    { value: 10, text: 'Farmer Ussop' },
+    { value: 100, text: 'Farmer Frankie' },
+    { value: 120, text: 'Farmer Jimbei' }
+  ]
 };
 
 const categorySearch = {
-  type: "category",
-  label: "Category",
+  type: 'category',
+  label: 'Category',
   items: [
-    { value: 10, text: "vegetables" }, 
-    { value: 100, text: "farm tools" }, 
-    { value: 120, text: "Fertilizer"}
-  ], 
+    { value: 10, text: 'vegetables' },
+    { value: 100, text: 'farm tools' },
+    { value: 120, text: 'Fertilizer' }
+  ]
 };
 
 export default function ProductSearch() {
@@ -82,11 +82,7 @@ export default function ProductSearch() {
         {searchFilters.map((item, index) => (
           <Grid item key={item.type}>
             <FormControl>
-              <Select
-                id={item.type}
-                value={item.items[index].value}
-                label={item.label}
-              >
+              <Select id={item.type} value={item.items[index].value} label={item.label}>
                 <MenuItem value="">
                   <em>{item.label}</em>
                 </MenuItem>
