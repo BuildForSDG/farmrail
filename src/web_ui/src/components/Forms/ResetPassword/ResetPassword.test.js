@@ -2,7 +2,7 @@ import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import ResetPassword from "./";
-import resetimg from "../../../assets/images/auth/resetimg.jpg";
+import resetimg from "../../../../public/images/resetimg.jpg";
 
 
 let container = null;

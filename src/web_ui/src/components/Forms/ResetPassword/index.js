@@ -3,8 +3,6 @@ import Card from "@material-ui/core/Card";
 import {makeStyles} from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import './ResetPassword.css';
-import resetimg from "../../../assets/images/auth/resetimg.jpg";
-
 
 const useStyles = makeStyles((theme)=>({
     card:{
@@ -66,7 +64,7 @@ const ResetPassword = () =>{
             <Card className={` ${classes.card} reset-password-card`}>
                 <CardContent>
                     <div className={`${classes.imageWrapper} reset-image`}>
-                        <img src={resetimg}  alt="farm"  className={classes.farmImage}/>
+                        <img src="/images/resetimg.jpg"  alt="farm"  className={classes.farmImage}/>
                     </div>
                     <div className={`${classes.resetForm} reset-form`}>
                         <h1 className={classes.h1}>Farmrail</h1>
