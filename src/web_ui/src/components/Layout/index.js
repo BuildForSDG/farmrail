@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import PropTypes from 'prop-types';
 import HeaderBar from './Header/HeaderBar';
 import Footer from './Footer';
 
@@ -9,13 +10,13 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '65vh',
     marginTop: '64px',
     [theme.breakpoints.down('md')]: {
-      margin: '10% 0 0 14%',
-    },
-  },
+      margin: '10% 0 0 14%'
+    }
+  }
 }));
 
 export default function Layout(props) {
-  const {children} = props;
+  const { children } = props;
   const classes = useStyles();
 
   return (
@@ -33,3 +34,7 @@ export default function Layout(props) {
     </>
   );
 }
+
+Layout.propTypes = {
+  children: PropTypes.element.isRequired
+};

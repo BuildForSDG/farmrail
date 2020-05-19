@@ -27,8 +27,15 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 
-import { ShoppingBasket, SupervisedUserCircle, AddAPhoto, QuestionAnswer, PostAdd } from '@material-ui/icons';
-import { Settings, LiveHelp } from '@material-ui/icons';
+import {
+  ShoppingBasket,
+  SupervisedUserCircle,
+  AddAPhoto,
+  QuestionAnswer,
+  PostAdd,
+  Settings,
+  LiveHelp
+} from '@material-ui/icons';
 
 import { drawerWidth } from '../../common/Globals';
 
@@ -37,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2)
   },
   logoImg: {
     maxWidth: '115px'
@@ -45,46 +52,46 @@ const useStyles = makeStyles((theme) => ({
   title: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+      display: 'block'
+    }
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    whiteSpace: 'nowrap',
+    whiteSpace: 'nowrap'
   },
   drawerOpen: {
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   drawerClose: {
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.leavingScreen
     }),
     overflowX: 'hidden',
     width: theme.spacing(7) + 1,
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9) + 1,
-    },
+      width: theme.spacing(9) + 1
+    }
   },
   toolbar: {
     display: 'flex',
@@ -92,25 +99,25 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
+    ...theme.mixins.toolbar
   },
   hide: {
-    display: 'none',
+    display: 'none'
   },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade(theme.palette.common.white, 0.25)
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: '100%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
+      width: 'auto'
+    }
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -119,10 +126,10 @@ const useStyles = makeStyles((theme) => ({
     pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   inputRoot: {
-    color: 'inherit',
+    color: 'inherit'
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -131,21 +138,21 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
+      width: '20ch'
+    }
   },
   sectionDesktop: {
     display: 'none',
     [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
+      display: 'flex'
+    }
   },
   sectionMobile: {
     display: 'flex',
     [theme.breakpoints.up('md')]: {
-      display: 'none',
-    },
-  },
+      display: 'none'
+    }
+  }
 }));
 
 export default function HeaderAppBar() {
@@ -245,11 +252,11 @@ export default function HeaderAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar 
+      <AppBar
         position="fixed"
         color="inherit"
         className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
+          [classes.appBarShift]: open
         })}
       >
         <Toolbar>
@@ -260,7 +267,7 @@ export default function HeaderAppBar() {
             edge="start"
             className={classes.menuButton}
           >
-            { !open ? <MenuIcon /> : theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon /> }
+            {!open ? <MenuIcon /> : theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
           <Typography className={classes.title} noWrap>
             <Link href="/">
@@ -275,7 +282,7 @@ export default function HeaderAppBar() {
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
-                input: classes.inputInput,
+                input: classes.inputInput
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
@@ -325,13 +332,13 @@ export default function HeaderAppBar() {
         variant="permanent"
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
+          [classes.drawerClose]: !open
         })}
         classes={{
           paper: clsx({
             [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          }),
+            [classes.drawerClose]: !open
+          })
         }}
       >
         <div className={classes.toolbar}>
@@ -342,38 +349,54 @@ export default function HeaderAppBar() {
         <Divider />
         <List>
           <ListItem button>
-            <ListItemIcon><ShoppingBasket /></ListItemIcon>
+            <ListItemIcon>
+              <ShoppingBasket />
+            </ListItemIcon>
             <ListItemText primary="Market" />
           </ListItem>
           <ListItem button>
-            <ListItemIcon><QuestionAnswer /></ListItemIcon>
+            <ListItemIcon>
+              <QuestionAnswer />
+            </ListItemIcon>
             <ListItemText primary="Question & Answer" />
           </ListItem>
           <ListItem button>
-            <ListItemIcon><SupervisedUserCircle /></ListItemIcon>
+            <ListItemIcon>
+              <SupervisedUserCircle />
+            </ListItemIcon>
             <ListItemText primary="Forums" />
           </ListItem>
           <ListItem button>
-            <ListItemIcon><AddAPhoto /></ListItemIcon>
+            <ListItemIcon>
+              <AddAPhoto />
+            </ListItemIcon>
             <ListItemText primary="Media" />
           </ListItem>
           <ListItem button>
-            <ListItemIcon><InboxIcon /></ListItemIcon>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
             <ListItemText primary="Messages" />
           </ListItem>
           <ListItem button>
-            <ListItemIcon><PostAdd /></ListItemIcon>
+            <ListItemIcon>
+              <PostAdd />
+            </ListItemIcon>
             <ListItemText primary="Info Lookup" />
           </ListItem>
         </List>
         <Divider />
         <List>
           <ListItem button>
-            <ListItemIcon><Settings /></ListItemIcon>
+            <ListItemIcon>
+              <Settings />
+            </ListItemIcon>
             <ListItemText primary="Settings" />
           </ListItem>
           <ListItem button>
-            <ListItemIcon><LiveHelp /></ListItemIcon>
+            <ListItemIcon>
+              <LiveHelp />
+            </ListItemIcon>
             <ListItemText primary="Help" />
           </ListItem>
         </List>
