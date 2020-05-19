@@ -1,5 +1,4 @@
-/* eslint-disable linebreak-style */
-import { Link } from 'react-router-dom';
+import { Link, Router } from 'react-router-dom';
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -31,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Signup() {
   const classes = useStyles();
   return (
-    <Container component="main" maxWidth="xs">
+    <Container id="signupForm" component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5" style={{ textAlign: 'center' }}>
@@ -41,21 +40,21 @@ export default function Signup() {
           <div className="data-form-inputs">
             <label htmlFor="Name" className="d-block padding-s">
               Name
-              <input variant="outlined" required fullWidth id="user-name" name="userName" type="text" />
+              <input variant="outlined" required fullwidth="true" id="user-name" name="userName" type="text" />
             </label>
           </div>
           &nbsp;
           <div className="data-form-inputs">
             <label htmlFor="Email" className="d-block padding-s">
               Email
-              <input variant="outlined" required fullWidth id="user-email" name="userEmail" type="text" />
+              <input variant="outlined" required fullwidth="true" id="user-email" name="userEmail" type="text" />
             </label>
           </div>
           &nbsp;
           <div className="data-form-inputs">
             <label htmlFor="Password" className="d-block padding-s">
               Password
-              <input variant="outlined" required fullWidth id="password" name="password" type="text" />
+              <input variant="outlined" required fullwidth="true" id="password" name="password" type="text" />
             </label>
           </div>
           &nbsp;
@@ -63,15 +62,19 @@ export default function Signup() {
             <div className="data-form-inputs">
               <label htmlFor="Confirm Password" className="d-block padding-s">
                 Confirm Passord
-                <input variant="outlined" required fullWidth id="confirm-password" name="confirmPassord" type="text" />
+                <input variant="outlined" 
+                required fullwidth="true" 
+                id="confirm-password" name="confirmPassord" type="text" />
               </label>
             </div>
             &nbsp;
           </div>
           <Button mediumWidth size="large" type="submit" color="primary" variant="contained" className={classes.submit}>
+            {/* <Router > */}
             <Link to="/login">
               <h2>Signup</h2>
             </Link>
+            {/* </Router> */}
           </Button>
         </form>
       </div>

@@ -4,7 +4,7 @@ import Signup from '../Forms/Signup/Signup';
 
 export default function SignUp() {
   return (
-    <Layout>
+    <Layout id="signupCtn">
       <Signup />
     </Layout>
   );

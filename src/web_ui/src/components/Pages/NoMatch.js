@@ -5,7 +5,7 @@ import Layout from '../Layout';
 export default function NoMatch() {
   return (
     <Layout>
-      <h2>Oops nothing here!!</h2>
+      <h2 id="notFoundMessage">Oops nothing here!!</h2>
       <Link to="/">Take me home</Link>
     </Layout>
   );

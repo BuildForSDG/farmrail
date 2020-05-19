@@ -2,7 +2,8 @@ const localRoutes = {
   homepage: '/',
   dashboard: '/dashboard',
   signup: '/signup',
-  login: '/login'
+  login: '/login',
+  NoMatch: null
 };
 
 export default Object.freeze(localRoutes);

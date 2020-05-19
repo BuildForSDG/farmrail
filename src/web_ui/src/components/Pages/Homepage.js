@@ -1,6 +1,4 @@
-import React from 'react';
-import ProductSearch from '../common/ProductSearch';
-import Layout from '../Layout';
+import React, { Fragment } from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -12,91 +10,97 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { List, ListItem } from '@material-ui/core';
+import ProductSearch from '../common/ProductSearch';
+import Layout from '../Layout';
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   flex: {
     flex: 1
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(4, 0),
+    padding: theme.spacing(4, 0)
   },
   cardGrid: {
     paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    paddingBottom: theme.spacing(4)
   },
   card: {
     height: '100%',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '56.25%' // 16:9
   },
   cardContent: {
     flexGrow: 1,
-    paddingBottom: 0,
+    paddingBottom: 0
   },
   cardList: {
-    padding: 0,
+    padding: 0
   },
   space: {
-    paddingRight: theme.spacing(1),
+    paddingRight: theme.spacing(1)
   },
-  spaceTop :{
-    paddingTop: theme.spacing(1),
-  },
+  spaceTop: {
+    paddingTop: theme.spacing(1)
+  }
 }));
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Album() {
   const classes = useStyles();
-
   return (
-    <React.Fragment>
+    <>
       <Layout>
         {/* Hero unit */}
-        <div className={classes.heroContent}>
+        <div id="topSearchContainer" className={classes.heroContent}>
           <Container maxWidth="sm">
             <ProductSearch />
           </Container>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
+        <Container id="componentCardGrid" className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <Card id="gridCard" className={classes.card}>
                   <CardMedia
+                    id="cardMedia"
                     className={classes.cardMedia}
                     image="https://source.unsplash.com/random"
                     title="Vegetables"
                   />
-                  <CardContent className={classes.cardContent}>
+                  <CardContent id="contentCardGrid" className={classes.cardContent}>
                     <Grid container spacing={4}>
                       <Grid item xs={6}>
-                        <Typography color="textSecondary" gutterBottom component="h5">
+                        <Typography
+                          id="categoryType"
+                          className="categoryType"
+                          color="textSecondary"
+                          gutterBottom
+                          component="h5"
+                        >
                           VEGETABLES
                         </Typography>
                       </Grid>
                       <Grid item xs={6}>
                         <List className={classes.cardList}>
-                          <ListItem className={classes.cardList} disableGutters>
-                            <Timer className={classes.space} /> 
-                            2 hours ago
+                          <ListItem id="timePosted" className={classes.cardList} disableGutters>
+                            <Timer className={classes.space} />
+                            <div>2 hours ago</div>
                           </ListItem>
                         </List>
                       </Grid>
                     </Grid>
                     <Grid container className={classes.spaceTop}>
                       <Grid item xs={2}>
-                        <LocalOffer fontSize="large"/>
+                        <LocalOffer fontSize="large" />
                       </Grid>
                       <Grid item xs={3}>
-                        <Typography component="h5">
-                          Dodo
-                        </Typography>
+                        <Typography component="h5">Dodo</Typography>
                         Fastfarm
                       </Grid>
                     </Grid>
@@ -116,6 +120,6 @@ export default function Album() {
         </Container>
       </Layout>
       {/* End footer */}
-    </React.Fragment>
+    </>
   );
 }

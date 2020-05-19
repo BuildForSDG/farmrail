@@ -3,15 +3,13 @@
     display: flex;
     flex-direction: column;
   }
-  
-  
-  input {
+input {
     width: 100%;
     padding: 6px 20px;
     margin: 8px 0;
     box-sizing: border-box;
   }
   
-  form {
+form {
     padding-bottom: 5%;
   }

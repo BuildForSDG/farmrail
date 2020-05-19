@@ -12,29 +12,28 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles((theme) => ({
   heroButtons: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(2)
   },
   root: {
     backgroundColor: theme.palette.background.default,
     padding: '2px 4px',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   input: {
     marginLeft: theme.spacing(1),
-    flex: 1,
+    flex: 1
   },
   iconButton: {
-    padding: 10,
-  },
+    padding: 10
+  }
 }));
-
 
 export default function ProductSearch() {
   const classes = useStyles();
 
   return (
-    <div className={classes.heroButtons}>
+    <div id="productSearch" className={classes.heroButtons}>
       <Grid container spacing={2} justify="center">
         <Grid item xs={12}>
           <Paper component="form" className={classes.root}>
@@ -51,11 +50,7 @@ export default function ProductSearch() {
         </Grid>
         <Grid item>
           <FormControl>
-            <Select
-              id="category"
-              value={10}
-              label="Category"
-            >
+            <Select id="category" value={10} label="Category">
               <MenuItem value="">
                 <em>Farms</em>
               </MenuItem>
@@ -67,11 +62,7 @@ export default function ProductSearch() {
         </Grid>
         <Grid item>
           <FormControl>
-            <Select
-              id="category"
-              value={10}
-              label="Category"
-            >
+            <Select id="category" value={10} label="Category">
               <MenuItem value="">
                 <em>Farmer</em>
               </MenuItem>
@@ -83,11 +74,7 @@ export default function ProductSearch() {
         </Grid>
         <Grid item>
           <FormControl>
-            <Select
-              id="category"
-              value={10}
-              label="Category"
-            >
+            <Select id="category" value={10} label="Category">
               <MenuItem value="">
                 <em>Categories</em>
               </MenuItem>
