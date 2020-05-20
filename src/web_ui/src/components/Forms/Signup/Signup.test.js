@@ -13,11 +13,3 @@ beforeEach(() => {
 afterEach(() => {
     document.body.removeChild(cotainer)
 })
-
-// it("should render signup form", () => {
-//     act(() => {
-//         render(<SignUp/>, cotainer)
-//     })
-//     const signupForm = cotainer.querySelector("#signupForm");
-//     expect(signupForm).not.toBeNull();
-// })
