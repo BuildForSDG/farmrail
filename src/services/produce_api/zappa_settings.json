@@ -1,0 +1,97 @@
+{
+    "prod": {
+        "django_settings": "produceAPI.produceAPI.settings",
+        "profile_name": "default",
+        "project_name": "produce-api",
+        "runtime": "python3.8",
+        "s3_bucket": "produce"
+    },
+    "prod_ap_east_1": {
+        "aws_region": "ap-east-1",
+        "extends": "prod"
+    },
+    "prod_ap_northeast_1": {
+        "aws_region": "ap-northeast-1",
+        "extends": "prod"
+    },
+    "prod_ap_northeast_2": {
+        "aws_region": "ap-northeast-2",
+        "extends": "prod"
+    },
+    "prod_ap_northeast_3": {
+        "aws_region": "ap-northeast-3",
+        "extends": "prod"
+    },
+    "prod_ap_south_1": {
+        "aws_region": "ap-south-1",
+        "extends": "prod"
+    },
+    "prod_ap_southeast_1": {
+        "aws_region": "ap-southeast-1",
+        "extends": "prod"
+    },
+    "prod_ap_southeast_2": {
+        "aws_region": "ap-southeast-2",
+        "extends": "prod"
+    },
+    "prod_ca_central_1": {
+        "aws_region": "ca-central-1",
+        "extends": "prod"
+    },
+    "prod_cn_north_1": {
+        "aws_region": "cn-north-1",
+        "extends": "prod"
+    },
+    "prod_cn_northwest_1": {
+        "aws_region": "cn-northwest-1",
+        "extends": "prod"
+    },
+    "prod_eu_central_1": {
+        "aws_region": "eu-central-1",
+        "extends": "prod"
+    },
+    "prod_eu_north_1": {
+        "aws_region": "eu-north-1",
+        "extends": "prod"
+    },
+    "prod_eu_west_1": {
+        "aws_region": "eu-west-1",
+        "extends": "prod"
+    },
+    "prod_eu_west_2": {
+        "aws_region": "eu-west-2",
+        "extends": "prod"
+    },
+    "prod_eu_west_3": {
+        "aws_region": "eu-west-3",
+        "extends": "prod"
+    },
+    "prod_sa_east_1": {
+        "aws_region": "sa-east-1",
+        "extends": "prod"
+    },
+    "prod_us_east_1": {
+        "aws_region": "us-east-1",
+        "extends": "prod"
+    },
+    "prod_us_east_2": {
+        "aws_region": "us-east-2",
+        "extends": "prod"
+    },
+    "prod_us_gov_east_1": {
+        "aws_region": "us-gov-east-1",
+        "extends": "prod"
+    },
+    "prod_us_gov_west_1": {
+        "aws_region": "us-gov-west-1",
+        "extends": "prod"
+    },
+    "prod_us_west_1": {
+        "aws_region": "us-west-1",
+        "extends": "prod"
+    },
+    "prod_us_west_2": {
+        "aws_region": "us-west-2",
+        "extends": "prod"
+    }
+}
