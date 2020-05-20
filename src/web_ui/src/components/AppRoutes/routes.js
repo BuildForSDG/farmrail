@@ -3,7 +3,7 @@ const localRoutes = {
   dashboard: '/dashboard',
   signup: '/signup',
   login: '/login',
-  NoMatch: null
+  resetPassword: '/reset-password'
 };
 
 export default Object.freeze(localRoutes);

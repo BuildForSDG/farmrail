@@ -6,15 +6,15 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: green[500],
+      main: green[500]
     },
     secondary: {
-      main: green[100],
+      main: green[100]
     },
     error: {
-      main: blue[500],
-    },
-  },
+      main: blue[500]
+    }
+  }
 });
 
 export default theme;

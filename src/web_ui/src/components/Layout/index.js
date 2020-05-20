@@ -1,25 +1,26 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import PropTypes from 'prop-types';
 import HeaderBar from './Header/HeaderBar';
 import Footer from './Footer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   main: {
     minHeight: '65vh',
     marginTop: '64px',
     [theme.breakpoints.down('md')]: {
-      margin: '10% 0 0 14%',
-    },
-  },
+      margin: '10% 0 0 14%'
+    }
+  }
 }));
 
 export default function Layout(props) {
-  const {children} = props,
-    classes = useStyles();
+  const { children } = props;
+  const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <>
       <CssBaseline />
       <HeaderBar />
       <main className={classes.main}>
@@ -30,6 +31,10 @@ export default function Layout(props) {
       {/* Footer */}
       <Footer />
       {/* End footer */}
-    </React.Fragment>
+    </>
   );
 }
+
+Layout.propTypes = {
+  children: PropTypes.element.isRequired
+};

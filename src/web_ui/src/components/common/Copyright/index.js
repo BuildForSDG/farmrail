@@ -7,10 +7,9 @@ export default function Copyright() {
     <Typography data-copyright="copyright" variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link data-copyright="farmrail" color="inherit" href="https://farmrail-staging.netlify.app">
-        Farmrail
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
+        {'Farmrail '}
+      </Link>
+      {`${new Date().getFullYear()}.`}
     </Typography>
   );
 }

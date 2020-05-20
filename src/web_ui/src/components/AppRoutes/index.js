@@ -5,19 +5,19 @@ import Homepage from '../Pages/Homepage';
 import Dashboard from '../Pages/Dashboard';
 import Signup from '../Pages/SignUp';
 import Login from '../Forms/Login/Login';
+import ResetPassword from '../Pages/ResetPassword';
 import NoMatch from '../Pages/NoMatch';
 
 const ContentSwitch = () => {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Homepage} />
-        <Route path={localRoutes.dashboard} component={Dashboard} />
-        <Route path={localRoutes.signup} component={Signup} />
-        <Route path={localRoutes.login} component={Login} />
-        <Route component={NoMatch} />
-      </Switch>
-    </Router>
+    <Switch>
+      <Route exact path="/" component={Homepage} />
+      <Route path={localRoutes.dashboard} component={Dashboard} />
+      <Route path={localRoutes.signup} component={Signup} />
+      <Route path={localRoutes.login} component={Login} />
+      <Route path={localRoutes.resetPassword} component={ResetPassword} />
+      <Route component={NoMatch} />
+    </Switch>
   );
 };
 
