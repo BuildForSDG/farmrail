@@ -38,7 +38,6 @@ module.exports = {
       "comma-dangle": ["error", "never"],
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"]}],
       "no-param-reassign": ["error", { "props": false }],
-      "import/no-extraneous-dependencies": "off",
-      "linebreak-style": 0
+      "import/no-extraneous-dependencies": "off"
     },
   };

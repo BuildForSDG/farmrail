@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-dom"
+import { render, unmountComponentAtNode } from "react-dom"
 import { act } from 'react-dom/test-utils';
 import DashBoard from '../Dashboard';
 
@@ -11,8 +11,8 @@ beforeEach(() => {
 })
 
 afterEach(() => {
- document.body.removeChild(container);
- container = null;
+ unmountComponentAtNode(container)
+ container.remove()
 })
 
 it("should render dash board successfully", () => {

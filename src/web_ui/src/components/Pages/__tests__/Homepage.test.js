@@ -12,8 +12,8 @@ beforeEach(() => {
 })
 
 afterEach(() => {
- document.body.removeChild(container);
- container = null;
+  unmountComponentAtNode(container)
+  container.remove()
 })
 
 
