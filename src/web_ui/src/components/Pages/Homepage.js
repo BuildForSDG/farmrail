@@ -13,7 +13,7 @@ import { List, ListItem } from '@material-ui/core';
 import ProductSearch from '../common/ProductSearch';
 import Layout from '../Layout';
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   flex: {
     flex: 1
   },
@@ -52,30 +52,32 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Album() {
   const classes = useStyles();
-
   return (
-    <Layout>
+    <Layout id="topSearchContainer">
       {/* Hero unit */}
-      <div className={classes.heroContent}>
+      <div 
+      id="componentCardGrid"
+      className={classes.heroContent}>
         <Container maxWidth="sm">
           <ProductSearch />
         </Container>
       </div>
-      <Container className={classes.cardGrid} maxWidth="md">
+      <Container id="gridCard" className={classes.cardGrid} maxWidth="md">
         {/* End hero unit */}
         <Grid container spacing={4}>
           {cards.map((card) => (
             <Grid item key={card} xs={12} sm={6} md={4}>
               <Card className={classes.card}>
                 <CardMedia
+                  id="cardMedia"
                   className={classes.cardMedia}
                   image="https://source.unsplash.com/random"
                   title="Vegetables"
                 />
-                <CardContent className={classes.cardContent}>
+                <CardContent id="contentCardGrid" className={classes.cardContent}>
                   <Grid container spacing={4}>
                     <Grid item xs={6}>
-                      <Typography color="textSecondary" gutterBottom component="h5">
+                      <Typography id="categoryType" color="textSecondary" gutterBottom component="h5">
                         VEGETABLES
                       </Typography>
                     </Grid>
@@ -83,7 +85,7 @@ export default function Album() {
                       <List className={classes.cardList}>
                         <ListItem className={classes.cardList} disableGutters>
                           <Timer className={classes.space} />
-                          <Typography>2 hours ago</Typography>
+                          <Typography id="timePosted">2 hours ago</Typography>
                         </ListItem>
                       </List>
                     </Grid>
