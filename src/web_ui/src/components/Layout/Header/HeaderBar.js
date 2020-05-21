@@ -27,6 +27,9 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 
+import { useAuth0 } from "../../../context/auth0.context";
+
+
 import {
   ShoppingBasket,
   SupervisedUserCircle,
@@ -192,6 +195,7 @@ export default function HeaderAppBar() {
   };
 
   const menuId = 'primary-search-account-menu';
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -202,10 +206,30 @@ export default function HeaderAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Sign In</MenuItem>
-      <MenuItem>
+      
+      {JSON.parse(localStorage.getItem("farmRaiAuth")) === null
+      && 
+      <div>
+        { console.log() }
+        <MenuItem onClick={handleMenuClose}>
+      <div onClick={() => loginWithRedirect({})}>
+        Sign In
+      </div>
+       </MenuItem>   
+       <MenuItem>
         <Link href="./signup">Sign Up</Link>
-      </MenuItem>
+      </MenuItem> 
+      </div>
+    }
+      {JSON.parse(localStorage.getItem("farmRaiAuth")) !== null
+      && 
+      <MenuItem onClick={handleMenuClose}>
+      <div onClick={() => {
+        logout()
+        localStorage.removeItem("farmRaiAuth")        
+        }}>Log out</div>
+       </MenuItem>   
+      }
     </Menu>
   );
 
