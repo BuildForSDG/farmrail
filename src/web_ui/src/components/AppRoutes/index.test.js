@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import ContentSwitch from './index';
 import localRoutes from '../AppRoutes/routes';
 
-test('checks redirects to specified page', () => {
+it('checks redirects to specified page', () => {
   (
     <BrowserRouter>
       <ContentSwitch />
@@ -15,7 +15,8 @@ test('checks redirects to specified page', () => {
 });
 
 const searchParams = new URLSearchParams(localRoutes.search);
-test('checks if the route requested is not available', () => {
+
+it('checks if the route requested is not available', () => {
   (
     <BrowserRouter>
       <ContentSwitch />
