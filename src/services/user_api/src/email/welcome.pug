@@ -1,0 +1,19 @@
+extends baseEmail
+
+block content
+  p Hi #{firstName},
+  p Welcome to Farmrail, we're glad to have you 🎉🙏
+  p You account has been created at Farmrail 
+  p Please click or the confirmation button to activate your account or paste the this link into your browser: #{url}
+  table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
+    tbody
+      tr
+        td(align='left')
+          table(role='presentation', border='0', cellpadding='0', cellspacing='0')
+            tbody
+              tr
+                td
+                  a(href=`${url}`, target='_blank') Confirm your account
+  p Please note that the confirmation link will expire within an hour
+  p If you need any help with making hotel reservation or any other queries, please don't hesitate to contact us!
+  p - Support at Farmrail

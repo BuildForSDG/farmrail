@@ -1,5 +1,5 @@
 {
-  "short_name": "React App",
+  "short_name": "Fa",
   "name": "Create React App Sample",
   "icons": [
     {
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#206B34",
   "background_color": "#ffffff"
 }
