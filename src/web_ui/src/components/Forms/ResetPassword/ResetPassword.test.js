@@ -30,4 +30,5 @@ describe('RESET PASSWORD TESTS',()=>{
 		expect(container.querySelector("[data-reset-button]").textContent).toBe('Send Reset Password Link');
 		expect(container.querySelector("[data-back-home]").textContent).toBe('Back to Home');
 	})
+})
 
