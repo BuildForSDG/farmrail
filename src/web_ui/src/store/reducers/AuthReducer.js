@@ -2,17 +2,23 @@ import {
   USER_LOGIN
 } from '../../components/common/Globals';
 
+const auth_token = localStorage.getItem("auth_token")
+
 const initialState = {
-  data: {
-    userAuth: localStorage.getItem("auth_token") === null
-                ? null : JSON.parse(localStorage.getItem("auth_token")),
-  }
+    userAuth: auth_token === null
+                ? null : JSON.parse(auth_token),
+    isLoggedIn: auth_token === null
+  ? false : true,
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case USER_LOGIN:
-      return { data: action.data }
+      const data = {
+        userAuth: action.data,
+        isLoggedIn: true
+      }
+      return Object.assign(initialState, data)
     default:
       return state;
   }

@@ -28,19 +28,15 @@ export const Auth0Provider = ({ children, onRedirectCallback = DEFAULT_REDIRECT_
         onRedirectCallback(appState);
       }
 
-      const isAuthenticated = {
-        isAuthenticated: await auth0FromHook.isAuthenticated(),
-        userAuth: JSON.parse(localStorage.getItem("farmRaiAuth"))
-      }
+      const isAuthenticated = await auth0FromHook.isAuthenticated();
 
       setIsAuthenticated(isAuthenticated);
 
-      if (isAuthenticated.isAuthenticated) {
+      if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
         setUser(user);
         dispatch(LoginAction(user))
-        localStorage.setItem("farmRaiAuth", JSON.stringify({
-          isLoggedIn: true,
+        localStorage.setItem("auth_token", JSON.stringify({          
           user
         }))
       }
@@ -72,7 +68,7 @@ export const Auth0Provider = ({ children, onRedirectCallback = DEFAULT_REDIRECT_
     setLoading(false);
     setIsAuthenticated(true);
     setUser(user);
-    LoginAction(user);
+    dispatch(LoginAction(user));
   };
   return (
     <Auth0Context.Provider
@@ -89,7 +85,7 @@ export const Auth0Provider = ({ children, onRedirectCallback = DEFAULT_REDIRECT_
         getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
         logout: (...p) => auth0Client.logout(...p)
       }}
-    > { console.log(data) }
+    > 
       {children}
     </Auth0Context.Provider>
   );

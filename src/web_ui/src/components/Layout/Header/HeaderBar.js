@@ -26,6 +26,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
+import { useSelector } from 'react-redux'
 
 import { useAuth0 } from "../../../context/auth0.context";
 
@@ -163,7 +164,7 @@ export default function HeaderAppBar() {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+  const {isLoggedIn} = useSelector(state => state.userAuth)
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -206,11 +207,9 @@ export default function HeaderAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      
-      {JSON.parse(localStorage.getItem("auth_token")) === null
+      {isLoggedIn === false
       && 
       <div>
-        { console.log() }
         <MenuItem onClick={handleMenuClose}>
       <div onClick={() => loginWithRedirect({})}>
         Sign In
@@ -221,7 +220,7 @@ export default function HeaderAppBar() {
       </MenuItem> 
       </div>
     }
-      {JSON.parse(localStorage.getItem("auth_token")) !== null
+      {isLoggedIn === true
       && 
       <MenuItem onClick={handleMenuClose}>
       <div onClick={() => {
