@@ -64,7 +64,7 @@ export default function ProductSearch() {
   const searchFilters = [farmSearch, farmersSearch, categorySearch];
 
   return (
-    <div className={classes.heroButtons}>
+    <div id="productSearch" className={classes.heroButtons}>
       <Grid container spacing={2} justify="center">
         <Grid item xs={12}>
           <Paper component="form" className={classes.root}>

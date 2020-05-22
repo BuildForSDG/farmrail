@@ -14,7 +14,7 @@ export default function Footer() {
   const classes = useStyles();
 
   return (
-    <footer className={classes.footer}>
+    <footer id="footerDiv" className={classes.footer}>
       <Typography variant="h6" align="center" gutterBottom>
         Footer
       </Typography>
