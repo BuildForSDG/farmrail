@@ -20,8 +20,8 @@ import {getInitials} from "./stringHelpers";
 import {handleLogout} from "./coreActions";
 
 export const BarView = (props) => {
-    const profile = useSelector((state) => state.core.user)
-    const dispatch = useDispatch();
+    // const profile = useSelector((state) => state.core.user)
+    // const dispatch = useDispatch();
     const [dialogOpen, setDialogOpen] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const menuOpen = Boolean(anchorEl);
@@ -30,9 +30,9 @@ export const BarView = (props) => {
         setDialogOpen(true)
     }
 
-    function doLogout() {
-        dispatch(handleLogout())
-    }
+    // function doLogout() {
+    //     dispatch(handleLogout())
+    // }
 
     function closeDialog() {
         setDialogOpen(false)
@@ -56,12 +56,12 @@ export const BarView = (props) => {
         >
             <AccountCircle className={props.textClass}/>
             &nbsp;
-            <HiddenJs xsDown>
+            {/* <HiddenJs xsDown>
                 <Typography className={props.textClass}>{profile.fullName}</Typography>
             </HiddenJs>
             <HiddenJs smUp>
                 <Typography className={props.textClass}>{getInitials(profile.fullName)}</Typography>
-            </HiddenJs>
+            </HiddenJs> */}
         </IconButton>
         <Menu
             id="menu-appbar"
@@ -79,7 +79,7 @@ export const BarView = (props) => {
             onClose={handleCloseMenu}
         >
             <MenuItem onClick={openDialog}>Profile</MenuItem>
-            <MenuItem onClick={doLogout}>Logout</MenuItem>
+            {/* <MenuItem onClick={doLogout}>Logout</MenuItem> */}
         </Menu>
         <Dialog onClose={closeDialog} aria-labelledby="simple-dialog-title" open={dialogOpen}>
             <List>
@@ -89,13 +89,13 @@ export const BarView = (props) => {
                             <PersonIcon/>
                         </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary={profile.fullName}/>
+                    {/* <ListItemText primary={profile.fullName}/> */}
                 </ListItem>
                 <ListItem button>
                     <ListItemIcon>
                         <MailIcon/>
                     </ListItemIcon>
-                    <ListItemText primary={profile.email}/>
+                    {/* <ListItemText primary={profile.email}/> */}
                 </ListItem>
             </List>
         </Dialog>

@@ -32,89 +32,75 @@ const routes = [
         icon: AppsIcon
     },
     {
-        name: "People",
+        name: "Q&A Forum",
         icon: PeopleIcon,
-        items: [
-            {
-                name: "Contacts",
-                route: localRoutes.contacts
-            },
-            {
-                name: "Groups",
-                route: localRoutes.groups
-            }
-        ]
+        route: localRoutes.forum
+       
     },
     {
-        name: "Admin",
-        route: localRoutes.settings,
+        name: "Information Panel",
+        route: localRoutes.info,
         icon: SettingsIcon,
-        items: [
-            {
-                name: "Users",
-                route: localRoutes.users
-            },
-            {
-                name: "Settings",
-                route: localRoutes.settings
-            },
-        ]
+        
     },
     {
-        name: "Tasks",
+        name: "Customers",
         icon: PeopleIcon,
         items: [
             {
-                name: "Add tasks",
-                route: localRoutes.addTasks
+                name: "Wholesalers",
+                route: localRoutes.wholesalers
             },
             {
-                name: "View tasks",
-                route: localRoutes.viewTasks
+                name: "Personal",
+                route: localRoutes.personal
             }
         ]
     },
     
     {
-        name: "Volunteers",
+        name: "My Farm",
         icon: EmojiPeopleIcon,
         items: [
             {
-                name: "View volunteers",
+                name: "location",
                 route: localRoutes.viewVolunteers
-            },
-            {
-                name: "Add volunteers",
-                route: localRoutes.addVolunteers
             }
         ]
     },
     
 
     {
-        name: "Teamlead",
+        name: "Farm Products",
         icon: AssignmentIcon,
         items: [
             {
-                name: "Teamlead Calendar",
-                route: localRoutes.teamleadcalendar
+                name: "Plants",
+                route: localRoutes.plants
             },
             {
-                name: "View Assigned Tasks",
-                route: localRoutes.assignedtasks
+                name: "Animals",
+                route: localRoutes.animals
             }
         ]
     },
     {
-        name: "Volunteer Calendar",
-        route: localRoutes.volcalendar,
+        name: "My Diary",
+        route: localRoutes.mydiary,
         icon: EventNoteIcon
     },
     {
-        name: "Help",
-        route: localRoutes.help,
+        name: "Alerts",
+        route: localRoutes.alerts,
         icon: HelpIcon
     }
+    ,
+    {
+        name: "Settings",
+        route: localRoutes.settings,
+        icon: EventNoteIcon
+    }
+    
 ]
 const menBackgroundColor = grey[800]
 const useStyles = makeStyles((theme) =>
