@@ -207,7 +207,7 @@ export default function HeaderAppBar() {
       onClose={handleMenuClose}
     >
       
-      {JSON.parse(localStorage.getItem("farmRaiAuth")) === null
+      {JSON.parse(localStorage.getItem("auth_token")) === null
       && 
       <div>
         { console.log() }
@@ -221,12 +221,12 @@ export default function HeaderAppBar() {
       </MenuItem> 
       </div>
     }
-      {JSON.parse(localStorage.getItem("farmRaiAuth")) !== null
+      {JSON.parse(localStorage.getItem("auth_token")) !== null
       && 
       <MenuItem onClick={handleMenuClose}>
       <div onClick={() => {
         logout()
-        localStorage.removeItem("farmRaiAuth")        
+        localStorage.removeItem("auth_token")        
         }}>Log out</div>
        </MenuItem>   
       }

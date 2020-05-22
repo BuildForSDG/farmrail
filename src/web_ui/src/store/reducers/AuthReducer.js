@@ -1,11 +1,11 @@
 import {
-  USER_LOGIN, GOOGLE_LOGIN, TWITTER_LOGIN, FACEBOOK_LOGIN
-} from '../constants/authConstants';
+  USER_LOGIN
+} from '../../components/common/Globals';
 
 const initialState = {
   data: {
-    userAuth: localStorage.getItem("farmRaiAuth") === null
-                ? null : JSON.parse(localStorage.getItem("farmRaiAuth")),
+    userAuth: localStorage.getItem("auth_token") === null
+                ? null : JSON.parse(localStorage.getItem("auth_token")),
   }
 };
 

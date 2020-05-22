@@ -1,7 +1,6 @@
 import {
-  USER_LOGIN, GOOGLE_LOGIN, TWITTER_LOGIN, FACEBOOK_LOGIN,
-  LOGIN_API
-} from '../../constants/authConstants';
+  USER_LOGIN,
+} from '../../../components/common/Globals';
 
 const LoginAction = (userData) => (dispatch) => {
   dispatch({
