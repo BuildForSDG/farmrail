@@ -27,7 +27,7 @@ import Typography from '@material-ui/core/Typography';
 import {Form, Formik, } from 'formik';
 import {useDispatch} from 'react-redux'
 import {handleLogin} from "../../Layout/LayoutDashboard/coreActions";
-
+import Layout from '../../Layout/index'
 import * as yup from "yup";
 // import {post} from "../../utils/ajax";
 // import {remoteRoutes} from "../../data/constants";
@@ -50,6 +50,7 @@ function Login() {
     // }
 
     return (
+        <Layout>
         <main className={classes.main}>
             <CssBaseline/>
             <Paper className={classes.paper}>
@@ -104,6 +105,7 @@ function Login() {
                 </Formik>
             </Paper>
         </main>
+        </Layout>
     );
 }
 
