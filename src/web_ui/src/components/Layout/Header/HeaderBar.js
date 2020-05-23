@@ -26,10 +26,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import { useSelector } from 'react-redux'
-
-import { useAuth0 } from "../../../context/auth0.context";
-
+import { useSelector } from 'react-redux';
 
 import {
   ShoppingBasket,
@@ -40,6 +37,9 @@ import {
   Settings,
   LiveHelp
 } from '@material-ui/icons';
+import { useAuth0 } from "../../../context/auth0.context";
+
+
 
 import { drawerWidth } from '../../common/Globals';
 
@@ -164,7 +164,7 @@ export default function HeaderAppBar() {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const {isLoggedIn} = useSelector(state => state.userAuth)
+  const { isLoggedIn } = useSelector((state) => state.userAuth);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -207,28 +207,27 @@ export default function HeaderAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {isLoggedIn === false
-      && 
-      <div>
+      {isLoggedIn === false && (
+        <div>
+          <MenuItem onClick={handleMenuClose}>
+                <div onClick={() => loginWithRedirect({})}>Sign In</div>
+        </MenuItem>   
+        <MenuItem>
+         <Link href="./signup">Sign Up</Link>
+       </MenuItem> 
+        </div>
+      )}
+      {isLoggedIn === true && (
         <MenuItem onClick={handleMenuClose}>
-      <div onClick={() => loginWithRedirect({})}>
-        Sign In
-      </div>
-       </MenuItem>   
-       <MenuItem>
-        <Link href="./signup">Sign Up</Link>
-      </MenuItem> 
-      </div>
-    }
-      {isLoggedIn === true
-      && 
-      <MenuItem onClick={handleMenuClose}>
-      <div onClick={() => {
-        logout()
-        localStorage.removeItem("auth_token")        
-        }}>Log out</div>
-       </MenuItem>   
-      }
+        <div onClick={() => {
+              logout();
+              localStorage.removeItem('auth_token');
+            }}
+          >
+            Log out
+          </div>
+       </MenuItem>
+      )}
     </Menu>
   );
 
