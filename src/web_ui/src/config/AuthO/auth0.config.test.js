@@ -1,4 +1,4 @@
-import Auth0 from './auth0.config';
+import Auth0 from './index';
 
 it("should return Auth0 config object", () => {
     expect(Auth0).toEqual({

@@ -1,18 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import ContentSwitch from './components/AppRoutes/index';
-import { useAuth0 } from './context/auth0.context';
 
 export default function App() {
-  const { loading,  } = useAuth0();
+  const { loading } = useSelector((state) => state);
   if (loading) {
     return <div>Farmrail Loading...</div>;
   }
   return (
-        <Router>
-          <Switch>
-            <ContentSwitch />
-          </Switch>
-        </Router>
+    <Router>
+      <Switch>
+        <ContentSwitch />
+      </Switch>
+    </Router>
   );
 }

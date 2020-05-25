@@ -26,7 +26,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import {
   ShoppingBasket,
@@ -37,11 +37,9 @@ import {
   Settings,
   LiveHelp
 } from '@material-ui/icons';
-import { useAuth0 } from "../../../context/auth0.context";
-
-
 
 import { drawerWidth } from '../../common/Globals';
+import { logOutClick } from '../../../store/actions/AuthActions';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -164,9 +162,11 @@ export default function HeaderAppBar() {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const { isLoggedIn } = useSelector((state) => state.userAuth);
+  const { isLoggedIn } = useSelector((state) => state.userAuth.user);
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const { loginWithRedirect, logout } = useSelector((state) => state.userAuth);
+  const dispatch = useDispatch();
 
   const [open, setOpen] = React.useState(false);
 
@@ -196,7 +196,7 @@ export default function HeaderAppBar() {
   };
 
   const menuId = 'primary-search-account-menu';
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -210,23 +210,25 @@ export default function HeaderAppBar() {
       {isLoggedIn === false && (
         <div>
           <MenuItem onClick={handleMenuClose}>
-                <div onClick={() => loginWithRedirect({})}>Sign In</div>
-        </MenuItem>   
-        <MenuItem>
-         <Link href="./signup">Sign Up</Link>
-       </MenuItem> 
+            <div onClick={() => loginWithRedirect({})}>Sign In</div>
+          </MenuItem>
+          <MenuItem>
+            <Link href="./signup">Sign Up</Link>
+          </MenuItem>
         </div>
       )}
       {isLoggedIn === true && (
         <MenuItem onClick={handleMenuClose}>
-        <div onClick={() => {
+          <div
+            onClick={() => {
               logout();
               localStorage.removeItem('auth_token');
             }}
           >
             Log out
+
           </div>
-       </MenuItem>
+        </MenuItem>
       )}
     </Menu>
   );

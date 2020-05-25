@@ -6,10 +6,10 @@ import { Provider } from 'react-redux';
 import App from './App';
 import theme from './components/Layout/theme';
 import * as serviceWorker from './serviceWorker';
-import config from './config/auth0.config';
-import { Auth0Provider } from './context/auth0.context';
 import history from './utils/history';
 import store from './store';
+import { Auth0Provider } from './utils/Auth0';
+import auth0Config from './config/AuthO';
 
 const onRedirectCallback = (appState) => {
   history.push(appState && appState.targetUrl ? appState.targetUrl : window.location.pathname);
@@ -19,8 +19,8 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Auth0Provider
-        domain={config.domain}
-        client_id={config.clientId}
+        domain={auth0Config.domain}
+        client_id={auth0Config.clientId}
         redirect_uri={window.location.origin}
         onRedirectCallback={onRedirectCallback}
       >
