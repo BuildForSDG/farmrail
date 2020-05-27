@@ -1,4 +1,4 @@
-import {AUTH_TOKEN_KEY, AUTH_USER_KEY} from "./constants";
+import {AUTH_TOKEN_KEY, AUTH_USER_KEY} from "../../AppRoutes/constants";
 
 
 const initialState = {

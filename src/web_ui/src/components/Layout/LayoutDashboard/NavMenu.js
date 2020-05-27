@@ -10,7 +10,7 @@ import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import SettingsIcon from '@material-ui/icons/Settings';
 import HelpIcon from '@material-ui/icons/Help';
 import { useHistory, useLocation } from 'react-router-dom'
-import { localRoutes } from "./constants";
+import { localRoutes } from "../../AppRoutes/constants";
 import appLogo from "./Farmrail-logo-plain.png";
 import { navBackgroundColor } from "./styles";
 import { createStyles, makeStyles, Theme, withStyles } from "@material-ui/core";
@@ -64,7 +64,7 @@ const routes = [
         items: [
             {
                 name: "location",
-                route: localRoutes.viewVolunteers
+                route: localRoutes.myfarm
             }
         ]
     },

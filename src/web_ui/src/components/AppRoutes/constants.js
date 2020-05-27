@@ -26,18 +26,19 @@ export const redux = {
 
 export const localRoutes = {
   dashboard: "/dashboard",
-  contacts: "/people/contacts",
-  contactsDetails: "/people/contacts/:contactId",
-  groups: "/people/groups",
+  forum: "/forum",
+  info: "/info",
+  wholesalers: "/customers/wholesalers",
+  personal: "/customers/personal",
+  myfarm: "/myfarm",
+  mydiary: "/mydiary",
+  plants: "/products/plants",
+  animals: "/products/animals",
+  settings: "/settings",
+  alerts: "/alerts", 
 
-  users: "/admin/users",
-  usersGroups: "/admin/user-groups",
-  tags: "/admin/tags",
-  settings: "/admin/settings",
-  help: "/help", 
-};
 
-
+}
     
 
 
