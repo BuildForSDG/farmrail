@@ -1,9 +1,13 @@
-const express = require('express');
-const mongoose = require('mongoose');
+import express from 'express';
+import mongoose from 'mongoose';
 
 const app = express();
+var port = process.env.PORT || 3000;
 
-const helloMembers = require('./routes/memberRoute');
+import helloMembers from './routes/memberRoute';
+
 app.use(helloMembers);
 
-app.listen(3000, () => console.log('connected to server'));
+app.listen(port, function () {
+  console.log(` listening on port ${port}!`);
+});
