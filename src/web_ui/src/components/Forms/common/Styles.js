@@ -1,11 +1,11 @@
 import {makeStyles, Theme} from "@material-ui/core";
 import createStyles from "@material-ui/core/styles/createStyles";
 
-export const useLoginStyles = makeStyles((theme) =>
+export const useStyles = makeStyles((theme) =>
     createStyles({
         main: {
             width: 'auto',
-            display: 'block', // Fix IE 11 issue.
+            display: 'block',
             marginLeft: theme.spacing(3),
             marginRight: theme.spacing(3),
             [theme.breakpoints.up(400 + theme.spacing(3 * 2),)]: {
@@ -26,7 +26,7 @@ export const useLoginStyles = makeStyles((theme) =>
             backgroundColor: theme.palette.secondary.main,
         },
         form: {
-            width: '100%', // Fix IE 11 issue.
+            width: '100%',
             marginTop: theme.spacing(1),
         },
         submit: {

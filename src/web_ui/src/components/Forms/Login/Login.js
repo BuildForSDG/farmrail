@@ -1,22 +1,3 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom';
-
-
-
-// export default function Login() {
-//   return (
-//     <div>
-      
-//       <Link to="/dashboard">
-//         <h2>Login</h2>
-//       </Link>
-//     </div>
-//   );
-// }
-
-
-
-
 import React from 'react';
 import {Button} from "@material-ui/core";
 import Avatar from '@material-ui/core/Avatar';
@@ -25,29 +6,14 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import {Form, Formik, } from 'formik';
-import {useDispatch} from 'react-redux'
-import {handleLogin} from "../../Layout/LayoutDashboard/coreActions";
 import Layout from '../../Layout/index'
 import * as yup from "yup";
-// import {post} from "../../utils/ajax";
-// import {remoteRoutes} from "../../data/constants";
-// import Toast from "../../utils/Toast";
-import XTextInput from "./XTextInput";
-import {useLoginStyles} from "./loginStyles";
+import XTextInput from "../common/XTextInput";
+import {useStyles} from "../common/Styles";
 import { Link } from 'react-router-dom';
 
 function Login() {
-    const classes = useLoginStyles();
-    // const dispatch = useDispatch();
-    // const onSubmit = (data, actions) => {
-    //     // post(remoteRoutes.login, data, resp => {
-    //     //     dispatch(handleLogin(resp))
-    //     // }, () => {
-    //     //     Toast.error("Invalid username/password")
-    //     // }, () => {
-    //     //     actions.setSubmitting(false)
-    //     // })
-    // }
+    const classes = useStyles();
 
     return (
         <Layout>
@@ -65,8 +31,6 @@ function Login() {
                         "username": "maria5angella@gmail.com",
                         "password": "Farmrail@123"
                     }}
-                    // validationSchema={schema}
-                    // onSubmit={onSubmit}
                 >
                     {(formState) => (
                         <Form className={classes.form}>
@@ -96,8 +60,6 @@ function Login() {
                                 disabled={formState.isSubmitting}
                             >
                                 Sign in
-                                
-
                             </Button>
                             </Link>
                         </Form>
