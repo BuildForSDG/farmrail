@@ -1,0 +1,9 @@
+node_modules
+build
+docs 
+docker
+test
+src/**/*test.js
+src/serviceWorker.js
+.vscode
+src/generated

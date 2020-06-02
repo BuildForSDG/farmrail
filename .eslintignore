@@ -3,5 +3,6 @@ build
 docs
 docker
 test
+src/**/*test.js
 .vscode
 src/generated

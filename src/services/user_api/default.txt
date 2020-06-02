@@ -1,0 +1,10 @@
+RF: improving code of the ft-user-api
+
+Removing the .env file
+Migrating to the es6 imports
+Database connection logic to a sepperate file
+Removidng commnets
+Creating unit tests for the main server
+
+Fixes#6
+
