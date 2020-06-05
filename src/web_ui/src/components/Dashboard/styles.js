@@ -1,6 +1,6 @@
 import grey from "@material-ui/core/colors/grey";
 import {createStyles, makeStyles, Theme} from "@material-ui/core";
-import {themeBackground} from "./custom-colors";
+import {themeBackground} from "../Layout/LayoutDashboard/custom-colors";
 
 export const drawerWidth = 240;
 export const navBackgroundColor = grey[900];
