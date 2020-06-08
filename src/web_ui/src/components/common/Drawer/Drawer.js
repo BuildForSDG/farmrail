@@ -144,4 +144,4 @@ export default function MainDrawer(props) {
 MainDrawer.propTypes = {
   open: PropTypes.bool.isRequired,
   handleDrawerClose: PropTypes.func.isRequired
-}
+};

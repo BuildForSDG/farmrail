@@ -6,7 +6,7 @@ const mapStateToProps = (state) => {
   const open = drawers[0].isOpen;
   return {
     open
-  }
+  };
 };
 
 export default connect(mapStateToProps)(MainDrawer);
