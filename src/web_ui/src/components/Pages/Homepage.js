@@ -13,6 +13,8 @@ import { List, ListItem } from '@material-ui/core';
 import ProductSearch from '../common/ProductSearch';
 import Layout from '../Layout';
 
+
+
 export const useStyles = makeStyles((theme) => ({
   flex: {
     flex: 1
