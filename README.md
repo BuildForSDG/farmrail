@@ -7,12 +7,11 @@ Build for SDG project repo
 
 PRODUCT DESCRIPTION
 
-Farmrail is a web-application that connects farmers to produce buyers/offtakers,
-Sellers of farm inputs like drugs, insecticides and other essential inputs,provides farmers with
-access to right information in regards to market variations and best farming practices.
+Farm rail is a web-based application that connects farmers to produce buyers/offtakers ranging from small scale produce buyers to large-scale produce buyers like companies, enabling buying and selling of farm inputs online and providing farmers with access to a chat forum where they can share information regarding various matters that could be challenging them.
+The product is to connect the entire agricultural sector ecosystem bringing the main drivers of the industry together in one platform.
 
 ## **Architecture**
-```
+
 |   Name        |   Service   |  Container  |    Tech                    |
 |:-------------:|:-----------:|:-----------:|:--------------------------:|
 | Web           | Web         | web         | React, Redux, React-Router |
@@ -21,7 +20,6 @@ access to right information in regards to market variations and best farming pra
 | User API      | Membership  | membership  | Node, Express, Auth0       |
 | Cart API      | Shopping    | shopping    | Django Rest framework      |
 
-```
  
  ## **Overall project structure**
  ```
