@@ -1,0 +1,9 @@
+{
+    "launch": {
+    
+    },
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 5,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 79
+}
