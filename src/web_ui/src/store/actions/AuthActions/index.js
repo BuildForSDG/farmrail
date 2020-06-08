@@ -1,4 +1,11 @@
-import { UPDATE_AUTH, LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS } from '../../../components/common/Globals';
+import {
+  UPDATE_AUTH,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS
+} from '../../../components/common/Globals';
 
 export const setAuth = (auth0Client) => {
   const data = {};
@@ -6,12 +13,12 @@ export const setAuth = (auth0Client) => {
   return updateAuth(data);
 };
 
-export const updateAuth = (data) => (dispatchEvent)  => {
+export const updateAuth = (data) => (dispatchEvent) => {
   return dispatchEvent({
     type: UPDATE_AUTH,
     data
-  })
-}
+  });
+};
 
 export const setIsAuthenticated = (isAthenticated) => {
   return updateAuth(isAthenticated);
@@ -20,13 +27,13 @@ export const setIsAuthenticated = (isAthenticated) => {
 export const setLoading = (loading) => {
   const data = {};
   data.loading = loading;
-  return updateAuth(data)
+  return updateAuth(data);
 };
 
 export const setPopupOpen = (popupOpen) => {
   const data = {};
   data.popupOpen = popupOpen;
-  return updateAuth(data)
+  return updateAuth(data);
 };
 
 // Login states for the application
@@ -35,8 +42,8 @@ function requestLogin() {
   return {
     type: LOGIN_REQUEST,
     isFetching: true,
-    isAuthenticated: false,
-  }
+    isAuthenticated: false
+  };
 }
 
 function recieveLogin(user) {
@@ -44,8 +51,8 @@ function recieveLogin(user) {
     type: LOGIN_SUCCESS,
     isFetching: false,
     isAuthenticated: true,
-    user: user
-  }
+    user
+  };
 }
 
 function loginError(message) {
@@ -54,17 +61,17 @@ function loginError(message) {
     isFetching: false,
     isAuthenticated: false,
     message
-  }
+  };
 }
 
 // Log out states for the application
 function requestLogout() {
-  const data = Object.assign({}, { isAthenticated: true })
+  const data = { isAthenticated: true };
   return {
     type: LOGOUT_REQUEST,
     isFetching: true,
     data
-  }
+  };
 }
 
 function recieveLogout() {
@@ -72,35 +79,35 @@ function recieveLogout() {
     type: LOGOUT_SUCCESS,
     isFetching: false,
     isAuthenticated: false
-  }
+  };
 }
 
 // Auth function calls
-export const loginClick = (loginFunc, params) => dispatch => {
+export const loginClick = (loginFunc, params) => (dispatch) => {
   dispatch(requestLogin());
   return loginFunc(params);
-}
+};
 
 export function loginUser(user) {
-  return dispatch => {
+  return (dispatch) => {
     // dispatch login request
     if (!user) {
       return dispatch(loginError(user));
     }
     localStorage.setItem('id_token', user.id_token);
     return dispatch(recieveLogin(user));
-  }
+  };
 }
 
 export function loginErrors(message) {
-  return dispatch => dispatch(loginError(message));
+  return (dispatch) => dispatch(loginError(message));
 }
 
 // Logs the user out
 export function logoutUser() {
-  return dispatch => {
-    dispatch(requestLogout())
-    localStorage.removeItem('id_token')
+  return (dispatch) => {
+    dispatch(requestLogout());
+    localStorage.removeItem('id_token');
     dispatch(recieveLogout());
-  }
+  };
 }

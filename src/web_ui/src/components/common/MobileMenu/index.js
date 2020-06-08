@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import MMenu from './Mmenu';
 import { loginClick, logoutUser } from '../../../store/actions/AuthActions';
-import { useAuth0 } from "../../../utils/Auth0";
-import PropTypes from 'prop-types';
+import { useAuth0 } from '../../../utils/Auth0';
 
 export default function MobileMenu(props) {
   const { dispatch, isAuthenticated, isMobileMenuOpen, mobileMoreAnchorEl, setMobileMoreAnchorEl } = props;
@@ -16,7 +16,7 @@ export default function MobileMenu(props) {
   const logoutClickHandler = () => dispatch(logoutUser());
 
   return (
-    <MMenu 
+    <MMenu
       loginclick={loginClickHandler}
       logoutclick={logoutClickHandler}
       mobileAnchor={mobileMoreAnchorEl}
@@ -32,4 +32,4 @@ MobileMenu.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   mobileMoreAnchorEl: PropTypes.element,
   setMobileMoreAnchorEl: PropTypes.func.isRequired
-}
+};

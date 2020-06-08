@@ -22,7 +22,7 @@ import {
   LiveHelp
 } from '@material-ui/icons';
 
-import { drawerWidth } from '../../common/Globals';
+import { drawerWidth } from '../Globals';
 
 const useStyles = makeStyles((theme) => ({
   drawer: {

@@ -1,7 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
 import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
-import { mobileMenuId } from '../../common/Globals';
 import AppBar from '@material-ui/core/AppBar';
 import Link from '@material-ui/core/Link';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -18,10 +17,11 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import { mobileMenuId } from '../../common/Globals';
 import Drawer from '../../common/Drawer';
 import { loginClick, logoutUser } from '../../../store/actions/AuthActions';
 import { drawerHandler } from '../../../store/actions/DrawerActions';
-import { useAuth0 } from "../../../utils/Auth0";
+import { useAuth0 } from '../../../utils/Auth0';
 
 import { drawerWidth } from '../../common/Globals';
 import MobileMenu from '../../common/MobileMenu';
@@ -136,7 +136,7 @@ export default function HeaderAppBar(props) {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={ !open ? () => changeDrawer('open', 0) : () => changeDrawer('close', 0) }
+            onClick={!open ? () => changeDrawer('open', 0) : () => changeDrawer('close', 0)}
             edge="start"
             className={classes.menuButton}
           >
@@ -177,24 +177,27 @@ export default function HeaderAppBar(props) {
                 <AddShoppingCartIcon />
               </Badge>
             </IconButton>
-            {!props.isAuthenticated ? <IconButton
-              edge="end"
-              aria-label="login user"
-              aria-haspopup="true"
-              onClick={ () => dispatch(loginClick(loginWithPopup, {})) }
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-            : <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
-              onClick={ () => logoutUser() }
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>}
+            {!props.isAuthenticated ? (
+              <IconButton
+                edge="end"
+                aria-label="login user"
+                aria-haspopup="true"
+                onClick={() => dispatch(loginClick(loginWithPopup, {}))}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            ) : (
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-haspopup="true"
+                onClick={() => logoutUser()}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            )}
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -209,10 +212,7 @@ export default function HeaderAppBar(props) {
           </div>
         </Toolbar>
       </AppBar>
-      <Drawer
-        open={open}
-        handleDrawerClose={changeDrawer}
-      />
+      <Drawer open={open} handleDrawerClose={changeDrawer} />
       <MobileMenu
         dispatch={dispatch}
         isAuthenticated={isAuthenticated}

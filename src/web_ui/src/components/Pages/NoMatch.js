@@ -8,7 +8,7 @@ export default function NoMatch() {
     <div>
       <h2 id="notFoundMessage">Oops nothing here!!</h2>
       <Link to="/">Take me home</Link>
-      </div>
+    </div>
     // </Layout>
   );
 }

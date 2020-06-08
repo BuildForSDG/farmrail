@@ -7,8 +7,6 @@ import RootReducer from './reducers';
 const middleWare = [thunk, logger];
 
 const composeEnhancers = composeWithDevTools({ realtime: true, port: 3000 });
-const store = createStore(RootReducer, composeEnhancers( 
-    applyMiddleware(...middleWare)
-));
+const store = createStore(RootReducer, composeEnhancers(applyMiddleware(...middleWare)));
 
 export default store;

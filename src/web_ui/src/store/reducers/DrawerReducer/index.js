@@ -10,16 +10,13 @@ const initialState = [
 const DrawerReducer = (state = initialState, action) => {
   const { id } = action;
 
-  switch(action.type) {
+  switch (action.type) {
     case OPEN_DRAWER:
     case CHANGE_DRAWER:
-      return state.map(drawer => drawer.id === id ?
-        { ...drawer, isOpen: !drawer.isOpen } :
-        drawer
-      );
+      return state.map((drawer) => (drawer.id === id ? { ...drawer, isOpen: !drawer.isOpen } : drawer));
     default:
       return state;
   }
-}
+};
 
 export default DrawerReducer;

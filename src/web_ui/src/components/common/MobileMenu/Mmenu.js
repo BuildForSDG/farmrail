@@ -1,5 +1,4 @@
 import React from 'react';
-import { mobileMenuId } from '../Globals';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -8,6 +7,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import PropTypes from 'prop-types';
+import { mobileMenuId } from '../Globals';
 
 export default function MMenu(props) {
   const { loginclick, logoutclick, mobileAnchor, isMenuOpen, menuClose, isAuthenticated } = props;
@@ -38,29 +38,31 @@ export default function MMenu(props) {
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
-      {!isAuthenticated && <MenuItem onClick={loginclick}>
-        <IconButton
-          aria-label="login user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Login</p>
-      </MenuItem>
-      }
-      {isAuthenticated && <MenuItem onClick={logoutclick}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Logout</p>
-      </MenuItem>
+      {!isAuthenticated &&
+        <MenuItem onClick={loginclick}>
+          <IconButton
+            aria-label="login user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+          <p>Login</p>
+        </MenuItem>
+        }
+      {isAuthenticated &&
+        <MenuItem onClick={logoutclick}>
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+          <p>Logout</p>
+        </MenuItem>
       }
     </Menu>
   );
@@ -72,4 +74,4 @@ MMenu.propTypes = {
   mobileAnchor: PropTypes.element,
   isMenuOpen: PropTypes.bool.isRequired,
   menuClose: PropTypes.func.isRequired
-}
+};
