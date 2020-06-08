@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import createAuth0Client from '@auth0/auth0-spa-js';
 import { useDispatch } from 'react-redux';
 import { loginUser, loginErrors } from '../../store/actions/AuthActions';
+import PropTypes from 'prop-types';
 
 const DEFAULT_REDIRECT_CALLBACK = () => window.history.replaceState({}, document.title, window.location.pathname);
 
@@ -80,3 +81,7 @@ export const Auth0Provider = ({ children, onRedirectCallback = DEFAULT_REDIRECT_
     </Auth0Context.Provider>
   );
 };
+
+Auth0Context.Provider.propTypes = {
+  children: PropTypes.element.isRequired
+}

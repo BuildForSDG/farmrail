@@ -22,7 +22,7 @@ import Drawer from '../../common/Drawer';
 import { loginClick, logoutUser } from '../../../store/actions/AuthActions';
 import { drawerHandler } from '../../../store/actions/DrawerActions';
 import { useAuth0 } from '../../../utils/Auth0';
-
+import PropTypes from 'prop-types';
 import { drawerWidth } from '../../common/Globals';
 import MobileMenu from '../../common/MobileMenu';
 
@@ -222,4 +222,9 @@ export default function HeaderAppBar(props) {
       />
     </div>
   );
+}
+
+HeaderAppBar.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 }

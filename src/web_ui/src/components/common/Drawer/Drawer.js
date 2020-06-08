@@ -11,6 +11,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
+import PropTypes from 'prop-types';
 
 import {
   ShoppingBasket,
@@ -61,9 +62,7 @@ const useStyles = makeStyles((theme) => ({
 export default function MainDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const { handleDrawerClose } = props;
-
-  const open = props.drawers[0].isOpen;
+  const { handleDrawerClose, open } = props;
 
   return (
     <Drawer
@@ -140,4 +139,9 @@ export default function MainDrawer(props) {
       </List>
     </Drawer>
   );
+}
+
+MainDrawer.propTypes = {
+  open: PropTypes.bool.isRequired,
+  handleDrawerClose: PropTypes.func.isRequired
 }

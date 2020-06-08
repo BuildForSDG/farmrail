@@ -69,6 +69,7 @@ export default function MMenu(props) {
 }
 
 MMenu.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
   loginclick: PropTypes.func.isRequired,
   logoutclick: PropTypes.func.isRequired,
   mobileAnchor: PropTypes.element,
