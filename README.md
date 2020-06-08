@@ -48,22 +48,22 @@ The product is to connect the entire agricultural sector ecosystem bringing the 
 
 ## **Contribute 🐱‍🏍**
 Follow these steps to contribute;
--  Clone the repository to your local machine
--  Install the needed dependencies
--  Create a new branch and checkout to that branch
--  Create your contribution 
--  Push the changes to the remote repository
--  Create a pull request to the main branch
--  Wait for code preview and approval ✔
+  -  Clone the repository to your local machine
+  -  Install the needed dependencies
+  -  Create a new branch and checkout to that branch
+  -  Create your contribution 
+  -  Push the changes to the remote repository
+  -  Create a pull request to the main branch
+  -  Wait for code review and approval ✔
 
 > **Your contribution will make a difference.** 😎
 
 ## **Credits** 🙌
--  [**Kevin**](https://github.com/kmwamasali) </br> 
--  [**Paul**](https://github.com/LadPaule) </br>
--  [**Maria Angella**](https://github.com/MariaAngella) </br>
--  [**Asiimwe Arnold**](https://github.com/asiimwearnold) </br>
--  [**Kayondo Edward**](https://github.com/amkayondo) </br>
--  [**Rogers Lubanga**](https://github.com/swimking) </br>
--  [**Bekalaze Joseph**](https://github.com/bekeplar) </br>
--  [**Andela SDG**](https://github.com/BuildForSDG) </br>
+  -  [**Kevin**](https://github.com/kmwamasali) </br> 
+  -  [**Paul**](https://github.com/LadPaule) </br>
+  -  [**Maria Angella**](https://github.com/MariaAngella) </br>
+  -  [**Asiimwe Arnold**](https://github.com/asiimwearnold) </br>
+  -  [**Kayondo Edward**](https://github.com/amkayondo) </br>
+  -  [**Rogers Lubanga**](https://github.com/swimking) </br>
+  -  [**Bekalaze Joseph**](https://github.com/bekeplar) </br>
+  -  [**Andela SDG**](https://github.com/BuildForSDG) </br>
