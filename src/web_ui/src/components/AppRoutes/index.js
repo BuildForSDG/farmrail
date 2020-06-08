@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import localRoutes from './routes';
+import localRoutes from '../common/Globals/routes';
 import Homepage from '../Pages/Homepage';
 import Dashboard from '../Pages/Dashboard';
 import Signup from '../Pages/SignUp';

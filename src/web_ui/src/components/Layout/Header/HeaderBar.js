@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
+import { mobileMenuId } from '../../common/Globals';
 import AppBar from '@material-ui/core/AppBar';
 import Link from '@material-ui/core/Link';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,38 +9,22 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import { useSelector, useDispatch } from 'react-redux';
-
-import {
-  ShoppingBasket,
-  SupervisedUserCircle,
-  AddAPhoto,
-  QuestionAnswer,
-  PostAdd,
-  Settings,
-  LiveHelp
-} from '@material-ui/icons';
+import Drawer from '../../common/Drawer';
+import { loginClick, logoutUser } from '../../../store/actions/AuthActions';
+import { drawerHandler } from '../../../store/actions/DrawerActions';
+import { useAuth0 } from "../../../utils/Auth0";
 
 import { drawerWidth } from '../../common/Globals';
-import { logOutClick } from '../../../store/actions/AuthActions';
+import MobileMenu from '../../common/MobileMenu';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -71,40 +56,6 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
     })
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: 'nowrap'
-  },
-  drawerOpen: {
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  drawerClose: {
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    }),
-    overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9) + 1
-    }
-  },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar
-  },
-  hide: {
-    display: 'none'
   },
   search: {
     position: 'relative',
@@ -157,122 +108,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function HeaderAppBar() {
+export default function HeaderAppBar(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const { dispatch, isAuthenticated, open } = props;
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const { isLoggedIn } = useSelector((state) => state.userAuth.user);
-  const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const { loginWithRedirect, logout } = useSelector((state) => state.userAuth);
-  const dispatch = useDispatch();
+  const { loginWithPopup } = useAuth0();
 
-  const [open, setOpen] = React.useState(false);
+  const changeDrawer = (cmd, id) => dispatch(drawerHandler(cmd, id));
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
+  // TODO: REFACTOR MOBILE MENU
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
-  const menuId = 'primary-search-account-menu';
-  // const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      {isLoggedIn === false && (
-        <div>
-          <MenuItem onClick={handleMenuClose}>
-            <div onClick={() => loginWithRedirect({})}>Sign In</div>
-          </MenuItem>
-          <MenuItem>
-            <Link href="./signup">Sign Up</Link>
-          </MenuItem>
-        </div>
-      )}
-      {isLoggedIn === true && (
-        <MenuItem onClick={handleMenuClose}>
-          <div
-            onClick={() => {
-              logout();
-              localStorage.removeItem('auth_token');
-            }}
-          >
-            Log out
-
-          </div>
-        </MenuItem>
-      )}
-    </Menu>
-  );
-
-  const mobileMenuId = 'primary-search-account-menu-mobile';
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton aria-label="show 0 new mails" color="inherit">
-          <Badge badgeContent={1} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 0 new notifications" color="inherit">
-          <Badge badgeContent={1} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
 
   return (
     <div className={classes.grow}>
@@ -287,7 +136,7 @@ export default function HeaderAppBar() {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={!open ? handleDrawerOpen : handleDrawerClose}
+            onClick={ !open ? () => changeDrawer('open', 0) : () => changeDrawer('close', 0) }
             edge="start"
             className={classes.menuButton}
           >
@@ -328,23 +177,31 @@ export default function HeaderAppBar() {
                 <AddShoppingCartIcon />
               </Badge>
             </IconButton>
-            <IconButton
+            {!props.isAuthenticated ? <IconButton
               edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
+              aria-label="login user"
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              onClick={ () => dispatch(loginClick(loginWithPopup, {})) }
               color="inherit"
             >
               <AccountCircle />
             </IconButton>
+            : <IconButton
+              edge="end"
+              aria-label="account of current user"
+              aria-haspopup="true"
+              onClick={ () => logoutUser() }
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>}
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
               aria-controls={mobileMenuId}
               aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
+              onClick={() => handleMobileMenuOpen}
               color="inherit"
             >
               <MoreIcon />
@@ -353,80 +210,16 @@ export default function HeaderAppBar() {
         </Toolbar>
       </AppBar>
       <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open
-          })
-        }}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          <ListItem button>
-            <ListItemIcon>
-              <ShoppingBasket />
-            </ListItemIcon>
-            <ListItemText primary="Market" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <QuestionAnswer />
-            </ListItemIcon>
-            <ListItemText primary="Question & Answer" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <SupervisedUserCircle />
-            </ListItemIcon>
-            <ListItemText primary="Forums" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <AddAPhoto />
-            </ListItemIcon>
-            <ListItemText primary="Media" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Messages" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <PostAdd />
-            </ListItemIcon>
-            <ListItemText primary="Info Lookup" />
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          <ListItem button>
-            <ListItemIcon>
-              <Settings />
-            </ListItemIcon>
-            <ListItemText primary="Settings" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <LiveHelp />
-            </ListItemIcon>
-            <ListItemText primary="Help" />
-          </ListItem>
-        </List>
-      </Drawer>
-      {renderMobileMenu}
-      {renderMenu}
+        open={open}
+        handleDrawerClose={changeDrawer}
+      />
+      <MobileMenu
+        dispatch={dispatch}
+        isAuthenticated={isAuthenticated}
+        isMobileMenuOpen={isMobileMenuOpen}
+        mobileMoreAnchorEl={mobileMoreAnchorEl}
+        setMobileMoreAnchorEl={setMobileMoreAnchorEl}
+      />
     </div>
   );
 }
