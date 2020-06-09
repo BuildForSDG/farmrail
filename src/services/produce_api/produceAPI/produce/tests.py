@@ -1,7 +1,8 @@
 import json
+import os
 
-from django.urls import reverse
 from django.contrib.auth.models import User
+from django.urls import reverse
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.test import APITestCase, RequestsClient
@@ -11,7 +12,6 @@ from .serializers import ProduceSerialiser
 
 client = RequestsClient()
 response = client.get('http://127.0.0.1:8000/products/')
-assert response.status_code == 200
 
 class CreateProductTestCase(APITestCase):
     def test_new_productcreation(self):
@@ -27,7 +27,7 @@ class CreateProductTestCase(APITestCase):
 class CredentialsTestCase(APITestCase):
     test_url = reverse('prod')
     def setup(self):
-        self.user = User.objects.create_user(username='testuser', email='testuser@farmrail.com', password='verystrongpsw')
+        self.user = User.objects.create_user(username='testuser', email='testuser@farmrail.com', password=os.environ.get('PRODUCE_API_SECRET'))
 
         self.token = Token.objects.create(user=self.user)
         self.produceAPI_authentication
