@@ -1,10 +1,8 @@
 from rest_framework import serializers
-from .models import Cart
 
-class Cart_serializer(serializers.ModelSerializer):
+from cart.models import Cart
+
+class CartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cart
-        fields = [
-            'items',
-            'item_quatity',
-        ]
+        fields = '__all__'

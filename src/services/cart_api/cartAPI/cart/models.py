@@ -1,35 +1,28 @@
 from django.db import models
 
+ADJUSTMENT_CHOICES = (
+    ('DISC', 'Discount'),
+    ('TAX', 'Tax'),
+    ('SHIP', 'Shipping'),
+)
+
+CHECKOUT_CHOICES = (
+    ('PEN', 'Pending'),
+    ('CAN', 'Cancelled'),
+    ('COM', 'Completed'),
+)
+
 class Cart(models.Model):
-    ADJUSTMENTS_CHOICES = (
-        ('DISC', 'Discount'),
-        ('SHIP', 'Shipping'),
-        ('TAX', 'Tax'),
-    )
+    Customer_first_name = models.CharField(max_length=50, default='first name')
+    Customer_last_name = models.CharField(max_length=50, default='last name')
+    Customer_email = models.CharField(max_length=75, unique=True, default='name@example.com')
+    items = models.TextField(blank=True)
+    itemsTotal = models.DecimalField(max_digits=15, decimal_places=3, default=0.000)
+    adjustments = models.CharField(choices=ADJUSTMENT_CHOICES, default='DISC', max_length=20)
+    adjustmentsTotal = models.DecimalField(max_digits=15, decimal_places=3, default=0.000)
+    total = models.DecimalField(max_digits=15, decimal_places=3, default=0.000)
+    checkOut_status = models.CharField(choices=CHECKOUT_CHOICES, max_length=15, default='PEN')
+    currencyCode = models.CharField(default='UGX', max_length=10)
 
-    CHECKOUT_CHOICES = (
-        ('PEN', 'Pending'),
-        ('COM', 'Completed'),
-        ('CAN', 'Cancelled')
-    )
-
-    CURRENCY_CHOICES = (
-        ('UGX', 'Ugandan Shillings'),
-        ('USD', 'United States Dollars'),
-        ('GBP', 'British Pound'),
-    )
-
-
-
-    customer_firstName = models.CharField(max_length=50)
-    customer_lastName = models.CharField(max_length=50)
-    customer_email = models.CharField(max_length=50, unique=True)
-    items = models.TextField()
-    item_quatity = models.PositiveIntegerField(default=0)
-    itemsTotal = models.DecimalField(max_digits=12, decimal_places=3, default=0.0)
-    adjustments = models.CharField(max_length=12, choices=ADJUSTMENTS_CHOICES, default='DISC')
-    adjustmentsTotal = models.DecimalField(max_digits=12, decimal_places=3, default=0.0)
-    total = models.DecimalField(max_digits=12, decimal_places=3, default=0.0)
-    checkOut = models.CharField(max_length=12, choices=CHECKOUT_CHOICES, default='PEN')
-    currenceCode = models.CharField(max_length=5, choices=CURRENCY_CHOICES, default='UGX')
-
+    def __str__(self):
+        return self.Customer_email

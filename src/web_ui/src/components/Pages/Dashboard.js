@@ -1,9 +1,13 @@
 import React from 'react';
+import Layout from '../Layout/index';
+import FarmItem from '../Dashboard/FarmItem';
 
 export default function Dashboard() {
   return (
-    <div id="appDashBoard">
-      <h2>Welcome to your Dashboard</h2>
-    </div>
+    <Layout>
+      <div id="appDashBoard">
+        <FarmItem />
+      </div>
+    </Layout>
   );
 }
