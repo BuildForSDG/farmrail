@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useField } from 'formik';
 import TextField from '@material-ui/core/TextField';
 import { hasValue } from './inputHelpers';
+import { PropTypes } from 'prop-types';
 
 const XTextInput = ({ name, ...props }) => {
   const [field, meta] = useField({ name });
@@ -19,5 +20,9 @@ const XTextInput = ({ name, ...props }) => {
     />
   );
 };
+
+XTextInput.propTypes = {
+  name: PropTypes.string.isRequired
+}
 
 export default XTextInput;

@@ -224,6 +224,7 @@ export default function HeaderAppBar(props) {
 }
 
 HeaderAppBar.propTypes = {
+  open: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired
 }

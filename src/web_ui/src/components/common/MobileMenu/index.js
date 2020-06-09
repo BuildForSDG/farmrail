@@ -33,6 +33,7 @@ MobileMenu.defaultProps = {
 
 MobileMenu.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  isMobileMenuOpen: PropTypes.bool.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   mobileMoreAnchorEl: PropTypes.element,
   setMobileMoreAnchorEl: PropTypes.func.isRequired

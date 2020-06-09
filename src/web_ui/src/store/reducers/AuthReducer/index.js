@@ -7,7 +7,7 @@ import {
 } from '../../../components/common/Globals';
 
 const initialState = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   user: null,
   isFetching: false,
   loading: true,
