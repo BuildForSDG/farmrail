@@ -6,14 +6,14 @@ import { useAuth0 } from '../../../utils/Auth0';
 
 export default function MobileMenu(props) {
   const { dispatch, isAuthenticated, isMobileMenuOpen, mobileMoreAnchorEl, setMobileMoreAnchorEl } = props;
-  const { loginWithPopup } = useAuth0();
+  const { loginWithPopup, logout } = useAuth0();
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
 
   const loginClickHandler = () => dispatch(loginClick(loginWithPopup, {}));
-  const logoutClickHandler = () => dispatch(logoutUser());
+  const logoutClickHandler = () => dispatch(logoutUser(logout));
 
   return (
     <MMenu
@@ -25,6 +25,10 @@ export default function MobileMenu(props) {
       isAuthenticated={isAuthenticated}
     />
   );
+}
+
+MobileMenu.defaultProps = {
+  mobileMoreAnchorEl: null
 }
 
 MobileMenu.propTypes = {

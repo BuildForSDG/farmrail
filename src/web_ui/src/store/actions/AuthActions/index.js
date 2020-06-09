@@ -1,5 +1,4 @@
 import {
-  UPDATE_AUTH,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
@@ -7,37 +6,8 @@ import {
   LOGOUT_SUCCESS
 } from '../../../components/common/Globals';
 
-export const setAuth = (auth0Client) => {
-  const data = {};
-  data.auth0Client = auth0Client;
-  return updateAuth(data);
-};
-
-export const updateAuth = (data) => (dispatchEvent) => {
-  return dispatchEvent({
-    type: UPDATE_AUTH,
-    data
-  });
-};
-
-export const setIsAuthenticated = (isAthenticated) => {
-  return updateAuth(isAthenticated);
-};
-
-export const setLoading = (loading) => {
-  const data = {};
-  data.loading = loading;
-  return updateAuth(data);
-};
-
-export const setPopupOpen = (popupOpen) => {
-  const data = {};
-  data.popupOpen = popupOpen;
-  return updateAuth(data);
-};
-
 // Login states for the application
-// Auth Dispacth Functions
+// Auth Dispatch Functions
 function requestLogin() {
   return {
     type: LOGIN_REQUEST,
@@ -66,19 +36,18 @@ function loginError(message) {
 
 // Log out states for the application
 function requestLogout() {
-  const data = { isAthenticated: true };
   return {
     type: LOGOUT_REQUEST,
-    isFetching: true,
-    data
+    isFetching: true
   };
 }
 
-function recieveLogout() {
+function recieveLogout(message) {
   return {
     type: LOGOUT_SUCCESS,
     isFetching: false,
-    isAuthenticated: false
+    isAuthenticated: false,
+    message
   };
 }
 
@@ -94,7 +63,6 @@ export function loginUser(user) {
     if (!user) {
       return dispatch(loginError(user));
     }
-    localStorage.setItem('id_token', user.id_token);
     return dispatch(recieveLogin(user));
   };
 }
@@ -104,10 +72,10 @@ export function loginErrors(message) {
 }
 
 // Logs the user out
-export function logoutUser() {
-  return (dispatch) => {
-    dispatch(requestLogout());
-    localStorage.removeItem('id_token');
-    dispatch(recieveLogout());
+export function logoutUser(logoutFunc) {
+  return async (dispatch) => {
+    await dispatch(requestLogout());
+    await logoutFunc();
+    return dispatch(recieveLogout('Logged Out Successfully'));
   };
 }

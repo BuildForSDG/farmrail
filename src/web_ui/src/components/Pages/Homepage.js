@@ -55,8 +55,7 @@ export default function Album() {
   return (
     <Layout id="topSearchContainer">
       {/* Hero unit */}
-      <div
-id="componentCardGrid" className={classes.heroContent}>
+      <div id="componentCardGrid" className={classes.heroContent}>
         <Container maxWidth="sm">
           <ProductSearch />
         </Container>

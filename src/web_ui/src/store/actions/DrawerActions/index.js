@@ -23,16 +23,18 @@ function drawerError(msg) {
 }
 
 // Drawer Handler Exports
-export const drawerHandler = (cmd, id) => (dispatch) => {
-  const msg = cmd ? `${cmd} is not a valid command` : `${id} is not valid`;
+export default function drawerHandler(cmd, id) { 
+  return (dispatch) => {
+    const msg = cmd ? `${cmd} is not a valid command` : `${id} is not valid`;
 
-  switch (cmd) {
-    case 'open':
-      return dispatch(openDrawer(id));
-    case 'close':
-    case 'change':
-      return dispatch(changeDrawer(id));
-    default:
-      return dispatch(drawerError(msg));
+    switch (cmd) {
+      case 'open':
+        return dispatch(openDrawer(id));
+      case 'close':
+      case 'change':
+        return dispatch(changeDrawer(id));
+      default:
+        return dispatch(drawerError(msg));
+    }
   }
 };

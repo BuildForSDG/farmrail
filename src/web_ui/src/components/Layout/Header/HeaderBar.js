@@ -17,13 +17,12 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { mobileMenuId } from '../../common/Globals';
+import PropTypes from 'prop-types';
+import { mobileMenuId, drawerWidth } from '../../common/Globals';
 import Drawer from '../../common/Drawer';
 import { loginClick, logoutUser } from '../../../store/actions/AuthActions';
-import { drawerHandler } from '../../../store/actions/DrawerActions';
+import drawerHandler from '../../../store/actions/DrawerActions';
 import { useAuth0 } from '../../../utils/Auth0';
-import PropTypes from 'prop-types';
-import { drawerWidth } from '../../common/Globals';
 import MobileMenu from '../../common/MobileMenu';
 
 const useStyles = makeStyles((theme) => ({
@@ -114,7 +113,7 @@ export default function HeaderAppBar(props) {
   const { dispatch, isAuthenticated, open } = props;
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const { loginWithPopup } = useAuth0();
+  const { loginWithPopup, logout } = useAuth0();
 
   const changeDrawer = (cmd, id) => dispatch(drawerHandler(cmd, id));
 
@@ -177,7 +176,7 @@ export default function HeaderAppBar(props) {
                 <AddShoppingCartIcon />
               </Badge>
             </IconButton>
-            {!props.isAuthenticated ? (
+            {!isAuthenticated ? (
               <IconButton
                 edge="end"
                 aria-label="login user"
@@ -192,7 +191,7 @@ export default function HeaderAppBar(props) {
                 edge="end"
                 aria-label="account of current user"
                 aria-haspopup="true"
-                onClick={() => logoutUser()}
+                onClick={() => dispatch(logoutUser(logout))}
                 color="inherit"
               >
                 <AccountCircle />

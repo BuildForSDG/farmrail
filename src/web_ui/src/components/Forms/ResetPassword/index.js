@@ -85,31 +85,38 @@ const ResetPassword = () => {
             <img data-reset-image src="/images/resetimg.jpg" alt="farm" className={classes.farmImage} />
           </div>
           <div className={classes.resetForm}>
-            <h3 data-heading className={classes.h1}>RESET PASSWORD</h3>
-              <Formik
-                initialValues={{email:''}}
-                validationSchema={Yup.object({
+            <h3 data-heading className={classes.h1}>
+              RESET PASSWORD
+            </h3>
+            <Formik
+              initialValues={{email:''}}
+              validationSchema={Yup.object(
+                {
                   email: Yup.string().email('Invalid email address').required('Required')
-                })}
-                onSubmit={(values,{setSubmitting})=>{
+                }
+              )}
+              onSubmit={(values,{setSubmitting}) => {
                 alert(JSON.stringify(values));
                 setSubmitting(false);
               }}
             >
-              {formik=>(
+              {(formik)=>(
                 <form onSubmit={formik.handleSubmit}>
                   <input
-                    data-email-input type="email" id="email" {...formik.getFieldProps('email')}
-                    placeholder="Email" className={classes.inputField} 
+                    data-email-input
+                    type="email"
+                    id="email"
+                    {...formik.getFieldProps('email')}
+                    placeholder="Email"
+                    className={classes.inputField}
                     style={{border:formik.touched.email && formik.errors.email && "1px solid red"}}
                     autoComplete="off" />
+
                   {formik.touched.email && formik.errors.email ?
-                    (<div className={classes.errorMessage}>{formik.errors.email}</div>):null}
-                  <button 
-                    type="submit" 
-                    data-reset-button 
-                    className={classes.submitButton}
-                  >
+                    (<div className={classes.errorMessage}>{formik.errors.email}</div>) :
+                    null
+                  }
+                  <button type="submit" data-reset-button className={classes.submitButton}> 
                     Send Reset Password Link
                   </button>
                 </form>

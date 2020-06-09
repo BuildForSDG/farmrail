@@ -38,7 +38,7 @@ export default function MMenu(props) {
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
-      {!isAuthenticated &&
+      {!isAuthenticated && (
         <MenuItem onClick={loginclick}>
           <IconButton
             aria-label="login user"
@@ -50,8 +50,8 @@ export default function MMenu(props) {
           </IconButton>
           <p>Login</p>
         </MenuItem>
-        }
-      {isAuthenticated &&
+      )}
+      {isAuthenticated && (
         <MenuItem onClick={logoutclick}>
           <IconButton
             aria-label="account of current user"
@@ -63,9 +63,13 @@ export default function MMenu(props) {
           </IconButton>
           <p>Logout</p>
         </MenuItem>
-      }
+      )}
     </Menu>
   );
+}
+
+MMenu.defaultProps = {
+  mobileAnchor: null
 }
 
 MMenu.propTypes = {
