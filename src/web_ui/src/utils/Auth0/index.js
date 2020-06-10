@@ -32,7 +32,7 @@ export const Auth0Provider = ({ children, onRedirectCallback = DEFAULT_REDIRECT_
 
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
-        await auth0FromHook.getIdTokenClaims();
+        await auth0FromHook.getTokenSilently();
         setUser(user);
       }
 
@@ -52,6 +52,8 @@ export const Auth0Provider = ({ children, onRedirectCallback = DEFAULT_REDIRECT_
       setPopupOpen(false);
     }
     const user = await auth0Client.getUser();
+    const token = await auth0Client.getTokenSilently();
+    localStorage.setItem('id_token', token);
     dispatch(loginUser(user));
   };
 
@@ -59,6 +61,8 @@ export const Auth0Provider = ({ children, onRedirectCallback = DEFAULT_REDIRECT_
     setLoading(true);
     await auth0Client.handleRedirectCallback();
     const user = await auth0Client.getUser();
+    const token = await auth0Client.getTokenSilently();
+    localStorage.setItem('id_token', token);
     dispatch(loginUser(user));
   };
   return (

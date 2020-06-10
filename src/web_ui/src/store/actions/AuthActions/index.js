@@ -75,6 +75,7 @@ export function loginErrors(message) {
 export function logoutUser(logoutFunc) {
   return async (dispatch) => {
     await dispatch(requestLogout());
+    localStorage.removeItem('id_token');
     await logoutFunc();
     return dispatch(recieveLogout('Logged Out Successfully'));
   };
