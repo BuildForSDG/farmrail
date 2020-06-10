@@ -32,6 +32,7 @@ export const Auth0Provider = ({ children, onRedirectCallback = DEFAULT_REDIRECT_
 
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
+        await auth0FromHook.getIdTokenClaims();
         setUser(user);
       }
 
