@@ -27,7 +27,7 @@
     "html-to-text": "^5.1.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.12",
-    "nodemailer": "^6.4.6",
+    "nodemailer": "^6.4.16",
     "pug": "^2.0.4",
     "validator": "^13.0.0",
     "xss-clean": "^0.1.1"
