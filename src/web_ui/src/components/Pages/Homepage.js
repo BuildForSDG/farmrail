@@ -12,6 +12,7 @@ import Container from '@material-ui/core/Container';
 import { List, ListItem } from '@material-ui/core';
 import ProductSearch from '../common/ProductSearch';
 import Layout from '../Layout';
+import { products } from "../../apis/products";
 
 export const useStyles = makeStyles((theme) => ({
   flex: {
@@ -48,8 +49,6 @@ export const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 export default function Album() {
   const classes = useStyles();
   return (
@@ -63,27 +62,28 @@ export default function Album() {
       <Container id="gridCard" className={classes.cardGrid} maxWidth="md">
         {/* End hero unit */}
         <Grid container spacing={4}>
-          {cards.map((card) => (
-            <Grid item key={card} xs={12} sm={6} md={4}>
+          {products.map( product => (
+            <Grid item key={product.id} xs={12} sm={6} md={4}>
               <Card className={classes.card}>
                 <CardMedia
                   id="cardMedia"
                   className={classes.cardMedia}
-                  image="https://source.unsplash.com/random"
-                  title="Vegetables"
+                  image= {product.image}
+                  title= {product.name}
                 />
                 <CardContent id="contentCardGrid" className={classes.cardContent}>
                   <Grid container spacing={4}>
                     <Grid item xs={6}>
                       <Typography id="categoryType" color="textSecondary" gutterBottom component="h5">
-                        VEGETABLES
+                        {product.category}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
                       <List className={classes.cardList}>
                         <ListItem className={classes.cardList} disableGutters>
                           <Timer className={classes.space} />
-                          <Typography id="timePosted">2 hours ago</Typography>
+                          {/* TODO: Prefer to calculate time ago in the backend */}
+                          <Typography id="timePosted">{product.time_ago}</Typography>
                         </ListItem>
                       </List>
                     </Grid>
@@ -93,7 +93,7 @@ export default function Album() {
                       <LocalOffer fontSize="large" />
                     </Grid>
                     <Grid item xs={3}>
-                      <Typography component="h5">Dodo</Typography>
+                      <Typography component="h5">{product.category}</Typography>
                       Fastfarm
                     </Grid>
                   </Grid>
