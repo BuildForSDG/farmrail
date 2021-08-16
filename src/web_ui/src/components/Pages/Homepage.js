@@ -94,7 +94,7 @@ export default function Album() {
                     </Grid>
                     <Grid item xs={3}>
                       <Typography component="h5">{product.category}</Typography>
-                      Fastfarm
+                      {product.farm_name}
                     </Grid>
                   </Grid>
                 </CardContent>
