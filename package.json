@@ -31,7 +31,6 @@
     "url": "https://github.com/BuildForSDG/js-starter/issues"
   },
   "license": "MIT",
-
   "browserslist": [
     "last 1 Chrome versions"
   ]

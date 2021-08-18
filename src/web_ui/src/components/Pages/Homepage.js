@@ -49,7 +49,7 @@ export const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Album() {
+export default function HomePage() {
   const classes = useStyles();
   return (
     <Layout id="topSearchContainer">
