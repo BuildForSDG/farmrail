@@ -7,12 +7,13 @@ import Signup from '../Pages/SignUp';
 import Login from '../Forms/Login/Login';
 import ResetPassword from '../Pages/ResetPassword';
 import NoMatch from '../Pages/NoMatch';
+import PrivateRoute from '../AppRoutes/PrivateRoute';
 
 const ContentSwitch = () => {
   return (
     <Switch>
       <Route exact path="/" component={Homepage} />
-      <Route path={localRoutes.dashboard} component={Dashboard} />
+      <PrivateRoute path={localRoutes.dashboard} component={Dashboard} />
       <Route path={localRoutes.signup} component={Signup} />
       <Route path={localRoutes.login} component={Login} />
       <Route path={localRoutes.resetPassword} component={ResetPassword} />

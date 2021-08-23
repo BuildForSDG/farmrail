@@ -15,11 +15,8 @@ export default function Footer() {
 
   return (
     <footer id="footerDiv" className={classes.footer}>
-      <Typography variant="h6" align="center" gutterBottom>
-        Footer
-      </Typography>
       <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-        Something here to give the footer a purpose!
+        Farmrail Connecting Farmers
       </Typography>
       <Copyright />
     </footer>
