@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
 export default function HeaderAppBar(props) {
   const classes = useStyles();
   const theme = useTheme();
-  const { dispatch, isAuthenticated, open } = props;
+  const { dispatch, userAuth, open } = props;
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const { loginWithPopup, logout } = useAuth0();
@@ -118,8 +118,8 @@ export default function HeaderAppBar(props) {
   const changeDrawer = (cmd, id) => dispatch(drawerHandler(cmd, id));
 
   // TODO: REFACTOR MOBILE MENU
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
+  const handleMobileMenuOpen = () => {
+    setMobileMoreAnchorEl(!mobileMoreAnchorEl);
   };
 
   return (
@@ -176,7 +176,7 @@ export default function HeaderAppBar(props) {
                 <AddShoppingCartIcon />
               </Badge>
             </IconButton>
-            {!isAuthenticated ? (
+            {!userAuth.isAuthenticated ? (
               <IconButton
                 edge="end"
                 aria-label="login user"
@@ -187,15 +187,18 @@ export default function HeaderAppBar(props) {
                 <AccountCircle />
               </IconButton>
             ) : (
-              <IconButton
-                edge="end"
-                aria-label="account of current user"
-                aria-haspopup="true"
-                onClick={() => dispatch(logoutUser(logout))}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
+              <>
+                {userAuth.given_name}
+                <IconButton
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-haspopup="true"
+                  onClick={() => dispatch(logoutUser(logout))}
+                  color="inherit"
+                >
+                  <img src={userAuth.picture} />
+                </IconButton>
+              </>
             )}
           </div>
           <div className={classes.sectionMobile}>
@@ -214,7 +217,7 @@ export default function HeaderAppBar(props) {
       <Drawer open={open} handleDrawerClose={changeDrawer} />
       <MobileMenu
         dispatch={dispatch}
-        isAuthenticated={isAuthenticated}
+        isAuthenticated={userAuth.isAuthenticated}
         isMobileMenuOpen={isMobileMenuOpen}
         mobileMoreAnchorEl={mobileMoreAnchorEl}
         setMobileMoreAnchorEl={setMobileMoreAnchorEl}
@@ -226,5 +229,5 @@ export default function HeaderAppBar(props) {
 HeaderAppBar.propTypes = {
   open: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired
+  userAuth: PropTypes.object.isRequired
 }
