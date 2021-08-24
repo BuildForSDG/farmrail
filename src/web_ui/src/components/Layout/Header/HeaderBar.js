@@ -188,7 +188,7 @@ export default function HeaderAppBar(props) {
               </IconButton>
             ) : (
               <>
-                {userAuth.given_name}
+                {userAuth.user.given_name}
                 <IconButton
                   edge="end"
                   aria-label="account of current user"
@@ -196,7 +196,7 @@ export default function HeaderAppBar(props) {
                   onClick={() => dispatch(logoutUser(logout))}
                   color="inherit"
                 >
-                  <img src={userAuth.picture} alt={userAuth.given_name} />
+                  <img src={userAuth.user.picture} alt={userAuth.user.given_name} />
                 </IconButton>
               </>
             )}
