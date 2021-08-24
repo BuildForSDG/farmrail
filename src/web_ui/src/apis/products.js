@@ -5,7 +5,7 @@ export const products = [
     "name": "jackfruit",
     "created_at": "2012-04-23T18:25:43.511Z",
     "updated_at": "2012-04-23T18:25:43.511Z",
-    "image": "https://loremflickr.com/320/240/dog",
+    "image": "https://loremflickr.com/320/240/plant",
     "time_ago": "1 hour ago",
     "farm_name": "Fastfarm"
   },
@@ -15,7 +15,7 @@ export const products = [
     "name": "apples",
     "created_at": "2012-04-23T18:25:43.511Z",
     "updated_at": "2012-04-23T18:25:43.511Z",
-    "image": "https://loremflickr.com/320/240/paris",
+    "image": "https://loremflickr.com/320/240/fruit",
     "time_ago": "2 minutes ago",
     "farm_name": "Dairyfarm"
   },
@@ -25,7 +25,7 @@ export const products = [
     "name": "apples",
     "created_at": "2012-04-23T18:25:43.511Z",
     "updated_at": "2012-04-23T18:25:43.511Z",
-    "image": "https://loremflickr.com/320/240/brazil",
+    "image": "https://loremflickr.com/320/240/food",
     "time_ago": "2 hours ago",
     "farm_name": "Dairyfarm"
   },
@@ -35,7 +35,7 @@ export const products = [
     "name": "lemon",
     "created_at": "2012-04-23T18:25:43.511Z",
     "updated_at": "2012-04-23T18:25:43.511Z",
-    "image": "https://loremflickr.com/320/240?random",
+    "image": "https://loremflickr.com/320/240?vegetable",
     "time_ago": "24 hours ago",
     "farm_name": "Fastfarm"
   },
@@ -45,7 +45,7 @@ export const products = [
     "name": "grapes",
     "created_at": "2012-04-23T18:25:43.511Z",
     "updated_at": "2012-04-23T18:25:43.511Z",
-    "image": "https://loremflickr.com/320/240/cat",
+    "image": "https://loremflickr.com/320/240/grape",
     "time_ago": "12 hours ago",
     "farm_name": "Dairyfarm"
   },
@@ -55,7 +55,7 @@ export const products = [
     "name": "pears",
     "created_at": "2012-04-23T18:25:43.511Z",
     "updated_at": "2012-04-23T18:25:43.511Z",
-    "image": "https://loremflickr.com/320/240/italy",
+    "image": "https://loremflickr.com/320/240/bean",
     "time_ago": "30 minutes ago",
     "farm_name": "Fastfarm"
   },
@@ -65,7 +65,7 @@ export const products = [
     "name": "bananas",
     "created_at": "2012-04-23T18:25:43.511Z",
     "updated_at": "2012-04-23T18:25:43.511Z",
-    "image": "https://loremflickr.com/320/240/spain",
+    "image": "https://loremflickr.com/320/240/goat",
     "time_ago": "23 hours ago",
     "farm_name": "Fastfarm"
   },
@@ -75,7 +75,7 @@ export const products = [
     "name": "pineapples",
     "created_at": "2012-04-23T18:25:43.511Z",
     "updated_at": "2012-04-23T18:25:43.511Z",
-    "image": "https://loremflickr.com/320/240/china",
+    "image": "https://loremflickr.com/320/240/chicken",
     "time_ago": "1 day ago",
     "farm_name": "Fastfarm"
   },
@@ -85,18 +85,8 @@ export const products = [
     "name": "coconuts",
     "created_at": "2012-04-23T18:25:43.511Z",
     "updated_at": "2012-04-23T18:25:43.511Z",
-    "image": "https://loremflickr.com/320/240/tokyo",
+    "image": "https://loremflickr.com/320/240/salad",
     "time_ago": "10 days ago",
     "farm_name": "Fastfarm"
-  },
-  {
-    "id": 10,
-    "category": "FRUITS",
-    "name": "watermelon",
-    "created_at": "2012-04-23T18:25:43.511Z",
-    "updated_at": "2012-04-23T18:25:43.511Z",
-    "image": "https://loremflickr.com/320/240/london",
-    "time_ago": "2 hours ago",
-    "farm_name": "Dairyfarm"
   }
 ]
