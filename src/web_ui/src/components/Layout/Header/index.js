@@ -3,9 +3,8 @@ import HeaderAppBar from './HeaderBar';
 
 const mapStateToProps = (state) => {
   const { userAuth, drawers } = state;
-  const { isAuthenticated } = userAuth;
   return {
-    isAuthenticated,
+    userAuth,
     open: drawers[0].isOpen
   };
 };

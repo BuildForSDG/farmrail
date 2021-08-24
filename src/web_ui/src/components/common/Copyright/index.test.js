@@ -27,7 +27,7 @@ it("renders with or without a name correctly", () => {
   expect(container
     .querySelector('[data-copyright="copyright"]')
     .textContent
-    ).toBe(`Copyright © Farmrail 2020.`);
+    ).toBe(`Copyright © Farmrail 2021.`);
 
   // checks for link to website https://farmrail-staging.netlify.app
   expect(container
