@@ -56,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen
     })
   },
+  imageIcon: {
+    height: '25px',
+    borderRadius: '50%'
+  },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -188,7 +192,7 @@ export default function HeaderAppBar(props) {
               </IconButton>
             ) : (
               <>
-                {userAuth.user.given_name}
+                <p>{userAuth.user.given_name}</p>
                 <IconButton
                   edge="end"
                   aria-label="account of current user"
@@ -196,7 +200,7 @@ export default function HeaderAppBar(props) {
                   onClick={() => dispatch(logoutUser(logout))}
                   color="inherit"
                 >
-                  <img src={userAuth.user.picture} alt={userAuth.user.given_name} />
+                  <img className={classes.imageIcon} src={userAuth.user.picture} alt={userAuth.user.given_name} />
                 </IconButton>
               </>
             )}
