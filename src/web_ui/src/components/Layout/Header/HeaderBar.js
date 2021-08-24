@@ -8,6 +8,8 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -23,7 +25,6 @@ import Drawer from '../../common/Drawer';
 import { loginClick, logoutUser } from '../../../store/actions/AuthActions';
 import drawerHandler from '../../../store/actions/DrawerActions';
 import { useAuth0 } from '../../../utils/Auth0';
-import MobileMenu from '../../common/MobileMenu';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -122,9 +123,71 @@ export default function HeaderAppBar(props) {
   const changeDrawer = (cmd, id) => dispatch(drawerHandler(cmd, id));
 
   // TODO: REFACTOR MOBILE MENU
-  const handleMobileMenuOpen = () => {
-    setMobileMoreAnchorEl(!mobileMoreAnchorEl);
+  const handleMobileMenuClose = () => {
+    setMobileMoreAnchorEl(null);
   };
+
+  const handleMobileMenuOpen = (event) => {
+    setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleProfileMenuAction = (event) => {
+    userAuth.isAuthenticated ? dispatch(logoutUser(logout)) : dispatch(loginClick(loginWithPopup, {})); 
+  };
+
+  const renderMobileMenu = (
+    <Menu
+      anchorEl={mobileMoreAnchorEl}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      id={mobileMenuId}
+      keepMounted
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={isMobileMenuOpen}
+      onClose={handleMobileMenuClose}
+    >
+      {!userAuth.isAuthenticated ? (
+        <MenuItem onClick={handleProfileMenuAction}>
+          <IconButton
+            aria-label="login user"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+          <p>Login</p>
+        </MenuItem>
+      ) : (
+        <>
+          <MenuItem onClick={handleProfileMenuAction}>
+            <IconButton
+              aria-label={userAuth.user.given_name}
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <img className={classes.imageIcon} src={userAuth.user.picture} alt={userAuth.user.given_name} />
+            </IconButton>
+            <p>{userAuth.user.given_name}</p>
+          </MenuItem>
+          <MenuItem>
+            <IconButton aria-label="show 0 new mails" color="inherit">
+              <Badge badgeContent={0} color="secondary">
+                <MailIcon />
+              </Badge>
+            </IconButton>
+            <p>Messages</p>
+          </MenuItem>
+          <MenuItem>
+            <IconButton aria-label="show 0 new notifications" color="inherit">
+              <Badge badgeContent={0} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+            <p>Notifications</p>
+          </MenuItem>
+        </>
+      )}
+    </Menu>
+  );
 
   return (
     <div className={classes.grow}>
@@ -176,7 +239,7 @@ export default function HeaderAppBar(props) {
               </Badge>
             </IconButton>
             <IconButton aria-label="show 0 new notifications" color="inherit">
-              <Badge badgeContent={1} color="secondary">
+              <Badge badgeContent={0} color="secondary">
                 <AddShoppingCartIcon />
               </Badge>
             </IconButton>
@@ -210,7 +273,7 @@ export default function HeaderAppBar(props) {
               aria-label="show more"
               aria-controls={mobileMenuId}
               aria-haspopup="true"
-              onClick={() => handleMobileMenuOpen}
+              onClick={handleMobileMenuOpen}
               color="inherit"
             >
               <MoreIcon />
@@ -219,13 +282,7 @@ export default function HeaderAppBar(props) {
         </Toolbar>
       </AppBar>
       <Drawer open={open} handleDrawerClose={changeDrawer} />
-      <MobileMenu
-        dispatch={dispatch}
-        isAuthenticated={userAuth.isAuthenticated}
-        isMobileMenuOpen={isMobileMenuOpen}
-        mobileMoreAnchorEl={mobileMoreAnchorEl}
-        setMobileMoreAnchorEl={setMobileMoreAnchorEl}
-      />
+      {renderMobileMenu}
     </div>
   );
 }
