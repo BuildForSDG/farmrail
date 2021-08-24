@@ -196,7 +196,7 @@ export default function HeaderAppBar(props) {
                   onClick={() => dispatch(logoutUser(logout))}
                   color="inherit"
                 >
-                  <img src={userAuth.picture} />
+                  <img src={userAuth.picture} alt={userAuth.given_name} />
                 </IconButton>
               </>
             )}
