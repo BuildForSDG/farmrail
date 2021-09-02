@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import localRoutes from '../common/Globals/routes';
-import Homepage from '../Pages/Homepage';
+import Homepage from '../Pages/Homepage/index';
 import Dashboard from '../Pages/Dashboard';
 import Signup from '../Pages/SignUp';
 import Login from '../Forms/Login/Login';

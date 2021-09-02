@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -9,6 +9,8 @@ import InputBase from '@material-ui/core/InputBase';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { useDispatch } from 'react-redux';
+import { productHandler, fetchProducts } from '../../../store/actions/ProductActions';
 
 const useStyles = makeStyles((theme) => ({
   heroButtons: {
@@ -61,7 +63,10 @@ const categorySearch = {
 
 export default function ProductSearch() {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const searchFilters = [farmSearch, farmersSearch, categorySearch];
+
+  const handleChange = (e) => dispatch(productHandler(e.currentTarget.value));
 
   return (
     <div id="productSearch" className={classes.heroButtons}>
@@ -73,6 +78,7 @@ export default function ProductSearch() {
               className={classes.input}
               placeholder="Search vegetables, fertilizers, farm tools ..."
               inputProps={{ 'aria-label': 'search for produce' }}
+              onChange={handleChange}
             />
             <IconButton type="submit" className={classes.iconButton} aria-label="search">
               <SearchIcon />

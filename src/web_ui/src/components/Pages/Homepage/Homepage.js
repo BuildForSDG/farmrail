@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -10,9 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { List, ListItem } from '@material-ui/core';
-import ProductSearch from '../common/ProductSearch';
-import Layout from '../Layout';
-import { products } from "../../apis/products";
+import ProductSearch from '../../common/ProductSearch';
+import Layout from '../../Layout';
+import { fetchProducts } from '../../../store/actions/ProductActions';
 
 export const useStyles = makeStyles((theme) => ({
   flex: {
@@ -49,8 +49,13 @@ export const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function HomePage() {
+export default function HomePage({ products, dispatch }) {
   const classes = useStyles();
+
+  useEffect(() => {
+    return dispatch(fetchProducts());
+  }, [])
+
   return (
     <Layout id="topSearchContainer">
       {/* Hero unit */}
