@@ -54,7 +54,7 @@ export default function HomePage({ products, dispatch }) {
 
   useEffect(() => {
     return dispatch(fetchProducts());
-  }, [])
+  }, [dispatch])
 
   return (
     <Layout id="topSearchContainer">
