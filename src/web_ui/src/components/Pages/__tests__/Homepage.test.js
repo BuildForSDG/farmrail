@@ -6,7 +6,7 @@ import store from '../../../store';
 import { Auth0Provider } from '../../../utils/Auth0';
 import auth0Config from '../../../config/AuthO';
 
-import HomePage from "../Homepage"
+import HomePage from "../Homepage/Homepage"
 
 let container;
 
