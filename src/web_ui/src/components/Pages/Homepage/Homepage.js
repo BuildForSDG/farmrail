@@ -80,7 +80,7 @@ export default function HomePage({ products, dispatch }) {
                   <Grid container spacing={4}>
                     <Grid item xs={6}>
                       <Typography id="categoryType" color="textSecondary" gutterBottom component="h5">
-                        {product.category}
+                        {product.name}
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
