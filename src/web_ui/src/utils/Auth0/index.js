@@ -58,11 +58,11 @@ export const Auth0Provider = ({ children, onRedirectCallback = DEFAULT_REDIRECT_
   };
 
   const handleRedirectCallback = async () => {
+    const userToken = localStorage.getItem('user_token');
     setLoading(true);
     await auth0Client.handleRedirectCallback();
     const user = await auth0Client.getUser();
-    const token = await auth0Client.getTokenSilently();
-    localStorage.setItem('id_token', token);
+    localStorage.setItem('user_token', user);
     dispatch(loginUser(user));
   };
   return (
